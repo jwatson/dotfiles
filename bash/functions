@@ -1,0 +1,51 @@
+#!/bin/bash
+
+
+prompt()
+{
+    MYPWD=`echo $PWD | sed "s/\/Users\/$USER/\~/"`
+    echo -ne '\033]0;'$HOSTNAME : $USER'@'$MYPWD''/' \007'
+    unset MYPWD
+}
+
+update_terminal_cwd()
+{
+    local SEARCH=' '
+    local REPLACE='%20'
+    local PWD_URL="file://$HOSTNAME${PWD//$SEARCH/$REPLACE}"
+    printf '\e]7;%s\a' "$PWD_URL"
+}
+
+# Mimic the csh version of export.
+setenv()
+{
+    eval $1=\"$2\"
+    export $1
+}
+
+# Make a time-stamped directory
+mktsd()
+{
+    case $OSTYPE in
+    linux-gnu)
+        mkdir `date --iso-8601=minutes`
+        ;;
+
+    *)
+        mkdir `date +"%Y-%m-%dT%H:%M%z"`
+        ;;
+    esac
+}
+
+ctags_this()
+{
+    find * -type d -exec dirtags {} \;
+    ctags --file-scope=no -R
+}
+
+pycheck()
+{
+    FILES=$(git status -uno --porcelain | grep .py | awk '{print $2}')
+    pep8 $FILES
+    pyflakes $FILES
+}

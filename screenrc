@@ -1,0 +1,15 @@
+# Pretty annoying.
+startup_message off
+
+# Set the status line and keep it at the bottom.
+hardstatus alwayslastline "%{= KW}%-w%{= ck}%50>%n %t%{-}%+w%<%-22=%{w}%c [%l]"
+
+# Use CTRL-X instead of CTRL-A, since I use that all the time to jump
+# around.
+escape ^Xx
+
+# Detatch the screen if we're disconnected.
+autodetach on
+
+# Use 10,000 lines of scrollback.
+defscrollback 10000

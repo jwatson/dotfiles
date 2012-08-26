@@ -1,0 +1,8 @@
+# OS X Finder droppings.
+.DS_Store
+
+# Vim swap files.
+*.sw?
+
+# Compiled scripts.
+*.pyc
