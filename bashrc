@@ -44,7 +44,7 @@ esac
 
 # Set the terminal's title bar to the current working directory.
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
-    PROMPT_COMMAND="update_terminal_cwd"
+    PROMPT_COMMAND="update_terminal_cwd; prompt"
 else
     case $TERM in
         xterm*|rxvt*|screen)
