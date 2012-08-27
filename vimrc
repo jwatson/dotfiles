@@ -92,12 +92,6 @@ fun! EnsureVamIsOnDisk(vam_install_path)
     return 1
   else
     if 1 == confirm("Clone VAM into ".a:vam_install_path."?","&Y\n&N")
-      " I'm sorry having to add this reminder. Eventually it'll pay off.
-      call confirm("Remind yourself that most plugins ship with ".
-                  \"documentation (README*, doc/*.txt). It is your ".
-                  \"first source of knowledge. If you can't find ".
-                  \"the info you're looking for in reasonable ".
-                  \"time ask maintainers to improve documentation")
       call mkdir(a:vam_install_path, 'p')
       execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.shellescape(a:vam_install_path, 1).'/vim-addon-manager'
       " VAM runs helptags automatically when you install or update 
@@ -120,6 +114,6 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less'], {'auto_install' : 0})
+  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less'], {'auto_install' : 1})
 endfun
 call SetupVAM()
