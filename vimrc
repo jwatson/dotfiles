@@ -36,6 +36,10 @@ set incsearch
 set viminfo='100,f1
 set number
 
+set complete=.,b,u,]
+set wildmode=longest,list:longest
+
+
 " Hightlight text that goes over the 80-column limit.
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>80v.\+/
@@ -45,11 +49,16 @@ map :Q :qa
 map :waq :wq
 map <F1> :bp<Return>
 map <F2> :bn<Return>
-imap <F1> <Esc>:bp<Return>
-imap <F2> <Esc>:bn<Return>
-nmap ,t :!(cd %:p:h;ctags *.[ch])&
 map th :tabprev<CR>
 map tl :tabnext<CR>
+imap <F1> <Esc>:bp<Return>
+imap <F2> <Esc>:bn<Return>
+imap <Tab> <C-P>
+map <C-h> :nohl<cr>
+map <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
+map <C-t> <esc>:tabnew<CR>
+nmap ,t :!(cd %:p:h;ctags *.[ch])&
 
 set t_Co=256
 let g:zenburn_high_Contrast=0
@@ -73,11 +82,10 @@ autocmd FileType xml    set sw=2 sts=2
 autocmd FileType cpp    set sw=2 sts=2
 autocmd FileType objc   set ts=4 sw=4 sts=4
 
+autocmd BufRead,BufNewFile *.md set ft=markdown
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
 autocmd BufRead,BufNewFile *.asd set ft=lisp
 autocmd BufRead,BufNewFile *.arc set ft=lisp
-
-autocmd BufRead,BufNewFile *.lisp so ~/.vim/VIlisp-2.3/VIlisp.vim
 
 """
 """ Vim Addon Manager
