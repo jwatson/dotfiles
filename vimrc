@@ -61,34 +61,15 @@ map <C-t> <esc>:tabnew<CR>
 nmap ,t :!(cd %:p:h;ctags *.[ch])&
 
 set t_Co=256
-let g:zenburn_high_Contrast=0
-let g:zenburn_old_Visual=1
-colorscheme zenburn
-
 "" turn on syntax highligting only when the terminal supports colors
 if &t_Co > 1
-        syntax enable " also triggers ':filetype on'
+    syntax enable " also triggers ':filetype on'
 endif
 
 filetype plugin indent on
 
-autocmd FileType python setlocal ts=4 et sw=4 sts=4 fo=croqn
-"autocmd FileType erlang set fo-=t fo+=croql sw=4 sts=4
-autocmd FileType erlang set sw=4 sts=4
-autocmd FileType perl   set fo-=t fo+=croql
-autocmd FileType lisp   set fo-=t fo+=croql
-autocmd FileType html   set sw=2 sts=2
-autocmd FileType xml    set sw=2 sts=2
-autocmd FileType cpp    set sw=2 sts=2
-autocmd FileType objc   set ts=4 sw=4 sts=4
-
-autocmd BufRead,BufNewFile *.md set ft=markdown
-autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-autocmd BufRead,BufNewFile *.asd set ft=lisp
-autocmd BufRead,BufNewFile *.arc set ft=lisp
-
 """
-""" Vim Addon Manager
+""" Vim Addon Manager.
 """
 fun! EnsureVamIsOnDisk(vam_install_path)
   " windows users may want to use http://mawercer.de/~marc/vam/index.php
@@ -122,6 +103,30 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less'], {'auto_install' : 1})
+  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less', 'github:altercation/vim-colors-solarized'], {'auto_install' : 1})
 endfun
 call SetupVAM()
+
+"set g:zenburn_high_Contrast=0
+"set g:zenburn_old_Visual=1
+"colorscheme zenburn
+set background=dark
+set t_Co=16
+let g:solarized_menu=0
+colorscheme solarized
+
+autocmd FileType python setlocal ts=4 et sw=4 sts=4 fo=croqn
+"autocmd FileType erlang set fo-=t fo+=croql sw=4 sts=4
+autocmd FileType erlang set sw=4 sts=4
+autocmd FileType perl   set fo-=t fo+=croql
+autocmd FileType lisp   set fo-=t fo+=croql
+autocmd FileType html   set sw=2 sts=2
+autocmd FileType xml    set sw=2 sts=2
+autocmd FileType cpp    set sw=2 sts=2
+autocmd FileType objc   set ts=4 sw=4 sts=4
+
+autocmd BufRead,BufNewFile *.md set ft=markdown
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+autocmd BufRead,BufNewFile *.asd set ft=lisp
+autocmd BufRead,BufNewFile *.arc set ft=lisp
