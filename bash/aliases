@@ -1,6 +1,8 @@
 #!/bin/bash
 
-alias ls="ls -G"
+# Colorize GNU ls.
+[[ $PLATFORM == "linux" ]] && alias ls="ls --color=auto"
+
 alias la="ls -hasF"
 alias ll="ls -l"
 alias lh="ls -sh"
@@ -8,6 +10,4 @@ alias pd="perldoc -f"
 alias bc="bc -lq"
 alias senv="env | sort | less"
 alias dirs="dirs -v"
-alias grep="grep --color"
-alias sbcl="funnel.pl ~/.lisp-pipe sbcl"
 alias pip_update="pip freeze --local | cut -d = -f 1 | grep '^[A-Za-z]' | xargs pip install -U"

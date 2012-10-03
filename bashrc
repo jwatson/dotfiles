@@ -2,7 +2,11 @@
 
 ### Shell Stuff.
 
-# Don't do anything if this is not an interactive shell.
+source ~/.bash/paths
+source ~/.bash/aliases
+source ~/.bash/functions
+
+# Don't do anything else if this is not an interactive shell.
 [ -z "$PS1" ] && return
 
 # Enable case-insensitive globbing.
@@ -17,7 +21,15 @@ shopt -s checkwinsize
 
 export EDITOR="vim"
 export PAGER="less"
-export LSCOLORS="exgxcxdxcxegedabagacad"
+
+# Colorize BSD ls.
+if [[ $PLATFORM == "macos" ]]; then
+    export CLICOLOR=1
+    export LSCOLORS="exgxcxdxcxegedabagacad"
+fi
+
+# Tell `grep` to colorize matches.
+export GREP_OPTIONS="--color=auto"
 
 ### Prompt stuff.
 
@@ -59,8 +71,9 @@ fi
 ### Bash stuff.
 
 # Enable bash completion.
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+[[ $(which brew) ]] && prefix=$(brew --prefix) || prefix=""
+if [ -f $prefix/etc/bash_completion ]; then
+    . $prefix/etc/bash_completion
 fi
 
 export HISTSIZE=10000
