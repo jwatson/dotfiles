@@ -2,7 +2,7 @@ require 'rake'
 
 desc "Install dot files into the user's home directory."
 task :install do
-  replace_all = false
+  replace_all = ENV['force'] ? true : false
   Dir['*'].each do |file|
     next if %w[Rakefile README LICENSE].include? file
     
