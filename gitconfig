@@ -4,6 +4,7 @@
 [alias]
         co = checkout
         cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
+        dt = difftool
 [color]
         ui = auto
 [color "branch"]
@@ -30,3 +31,9 @@
         default = current
 [github]
         user = jwatson
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
