@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # If Postgres.app is installed, add its binaries to our path.
-if [ -d /Applications/Postgres.app/Contents/MacOS/bin ]; then
-    PGPATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-else
-    PGPATH=$PATH
-fi
+#if [ -d /Applications/Postgres.app/Contents/MacOS/bin ]; then
+#    PGPATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+#else
+#    PGPATH=$PATH
+#fi
 
-export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PGPATH"
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
-export NODE_PATH="/usr/local/lib/node_modules"
+export NODE_PATH="/usr/local/share/npm/lib/node_modules"
 
 # Activate my virtualenv.
 [[ -s ~/.venv/bin/activate ]] && source ~/.venv/bin/activate
