@@ -83,3 +83,6 @@ export HISTCONTROL=ignoreboth
 
 # Append to the history instead of overwriting.
 shopt -s histappend
+
+# Add AWS keys to the environment if they exist.
+[ -f ~/.awskeys ] && . ~/.awskeys
