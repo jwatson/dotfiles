@@ -7,12 +7,15 @@
 #    PGPATH=$PATH
 #fi
 
-export PATH="~/bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH"
+export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export NODE_PATH="/usr/local/share/npm/lib/node_modules"
 
-# Activate my virtualenv.
-[[ -s ~/.venv/bin/activate ]] && source ~/.venv/bin/activate
+# Add npm to the path if it is installed.
+[[ -s /usr/local/share/npm ]] && export PATH="$PATH:/usr/local/share/npm/bin"
+
+# Add heroku to the path if the toolbelt is installed.
+[[ -s /usr/local/heroku ]] && export PATH="$PATH:/usr/local/heroku/bin"
 
 # Enable RVM
 [[ -s ~/.rvm/scripts/rvm ]] && source ~/.rvm/scripts/rvm
