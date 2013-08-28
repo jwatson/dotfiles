@@ -1,4 +1,47 @@
 set nocompatible
+filetype off
+
+" Use Pathogen:
+call pathogen#incubate()
+call pathogen#helptags()
+
+" ========================================================================
+" Vundle stuff
+" ========================================================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Let Vundle manage Vundle (required)!
+Bundle 'gmarik/vundle'
+
+" My bundles
+Bundle 'airblade/vim-gitgutter'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'ervandew/supertab'
+Bundle 'godlygeek/tabular'
+Bundle 'groenewege/vim-less'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'koron/nyancat-vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-foreplay'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/ruby-matchit'
+Bundle 'wincent/Command-T'
+
+syntax on
+filetype plugin indent on
 
 set noautowrite
 set nobackup
@@ -39,7 +82,6 @@ set number
 set complete=.,b,u,]
 set wildmode=longest,list:longest
 
-
 " Hightlight text that goes over the 80-column limit.
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 match OverLength /\%>80v.\+/
@@ -65,47 +107,6 @@ set t_Co=256
 if &t_Co > 1
     syntax enable " also triggers ':filetype on'
 endif
-
-filetype plugin indent on
-
-"""
-""" Vim Addon Manager.
-"""
-fun! EnsureVamIsOnDisk(vam_install_path)
-  " windows users may want to use http://mawercer.de/~marc/vam/index.php
-  " to fetch VAM, VAM-known-repositories and the listed plugins
-  " without having to install curl, 7-zip and git tools first
-  " -> BUG [4] (git-less installation)
-  let is_installed_c = "isdirectory(a:vam_install_path.'/vim-addon-manager/autoload')"
-  if eval(is_installed_c)
-    return 1
-  else
-    if 1 == confirm("Clone VAM into ".a:vam_install_path."?","&Y\n&N")
-      call mkdir(a:vam_install_path, 'p')
-      execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.shellescape(a:vam_install_path, 1).'/vim-addon-manager'
-      " VAM runs helptags automatically when you install or update 
-      " plugins
-      exec 'helptags '.fnameescape(a:vam_install_path.'/vim-addon-manager/doc')
-    endif
-    return eval(is_installed_c)
-  endif
-endf
-
-fun! SetupVAM()
-  " VAM install location:
-  let vam_install_path = expand('$HOME') . '/.vim/vim-addons'
-  if !EnsureVamIsOnDisk(vam_install_path)
-    echohl ErrorMsg
-    echomsg "No VAM found!"
-    echohl NONE
-    return
-  endif
-  exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
-
-  " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less', 'github:altercation/vim-colors-solarized', 'github:airblade/vim-gitgutter'], {'auto_install' : 1})
-endfun
-call SetupVAM()
 
 "set g:zenburn_high_Contrast=0
 "set g:zenburn_old_Visual=1
