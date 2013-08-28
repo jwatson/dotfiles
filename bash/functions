@@ -55,3 +55,43 @@ pypkg()
     mkdir $1
     touch $1/__init__.py
 }
+
+
+# Switch AWS credentials.
+aws()
+{
+    if [ -f ~/.awskeys/$1 ]; then
+        echo -e "Switching to \033[33m$1\033[0m AWS credentials."
+        . ~/.awskeys/$1
+    else
+        echo -e "\033[31mUnknown credentials.\033[0m"
+    fi
+}
+
+
+# Quick way to rebuild the Launch Services database and get rid
+# of duplicates in the Open With submenu.
+# Modified from
+# http://www.leancrew.com/all-this/2013/02/getting-rid-of-open-with-duplicates/
+fixopenwith()
+{
+    /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
+}
+
+
+# For use with autoenv. Assumes virtualenvwrapper.
+use_env() {
+  typeset venv
+  venv="$1"
+  if [[ `basename "${VIRTUAL_ENV:t}"` != "$venv" ]]; then
+    if workon | grep $venv > /dev/null; then
+      workon "$venv"
+    else
+      echo -n "Create virtualenv $venv now? (Yn) "
+      read answer
+      if [[ "$answer" == "Y" ]]; then
+        mkvirtualenv "$venv"
+      fi
+    fi
+  fi
+}

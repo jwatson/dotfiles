@@ -97,3 +97,11 @@ shopt -s histappend
 
 # Add AWS keys to the environment if they exist.
 [ -f ~/.awskeys ] && . ~/.awskeys
+
+# Set up virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
+
+# Enable autoenv
+[ -f /usr/local/bin/activate.sh ] && . /usr/local/bin/activate.sh
