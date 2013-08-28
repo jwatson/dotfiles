@@ -103,7 +103,7 @@ fun! SetupVAM()
   exec 'set runtimepath+='.vam_install_path.'/vim-addon-manager'
 
   " Tell VAM which plugins to fetch & load:
-  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less', 'github:altercation/vim-colors-solarized'], {'auto_install' : 1})
+  call vam#ActivateAddons(['github:tpope/vim-fugitive', 'github:tpope/vim-markdown', 'github:tpope/vim-rails', 'github:tpope/vim-repeat', 'github:tpope/vim-surround', 'github:tpope/vim-unimpaired', 'github:kchmck/vim-coffee-script', 'github:msanders/snipmate.vim', 'github:scrooloose/syntastic', 'github:godlygeek/tabular', 'github:groenewege/vim-less', 'github:altercation/vim-colors-solarized', 'github:airblade/vim-gitgutter'], {'auto_install' : 1})
 endfun
 call SetupVAM()
 
