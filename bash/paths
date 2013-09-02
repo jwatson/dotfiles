@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# If Postgres.app is installed, add its binaries to our path.
-#if [ -d /Applications/Postgres.app/Contents/MacOS/bin ]; then
-#    PGPATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
-#else
-#    PGPATH=$PATH
-#fi
-
 export PATH="~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 export NODE_PATH="/usr/local/share/npm/lib/node_modules"
