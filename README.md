@@ -19,3 +19,9 @@ After that:
     $ git clone https://github.com/jwatson/dotfiles.git ~/.dotfiles
     $ cd ~/.dotfiles
     $ paver install
+
+Vim plugins are managed with vundle, which you'll need to install:
+
+    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+Then run `:BundleInstall` in vim to install the packages listed in `~/.vimrc`.
