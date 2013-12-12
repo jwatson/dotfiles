@@ -1,10 +1,6 @@
 set nocompatible
 filetype off
 
-" Use Pathogen:
-call pathogen#incubate()
-call pathogen#helptags()
-
 " ========================================================================
 " Vundle stuff
 " ========================================================================
@@ -21,8 +17,8 @@ Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'groenewege/vim-less'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'koron/nyancat-vim'
+Bundle 'rking/ag.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-classpath'
@@ -32,7 +28,6 @@ Bundle 'tpope/vim-foreplay'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
@@ -82,9 +77,7 @@ set number
 set complete=.,b,u,]
 set wildmode=longest,list:longest
 
-" Hightlight text that goes over the 80-column limit.
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-match OverLength /\%>80v.\+/
+set tags=~/.mytags
 
 map :W :wa
 map :Q :qa
@@ -117,7 +110,9 @@ let g:solarized_menu=0
 colorscheme solarized
 
 autocmd FileType python setlocal ts=4 et sw=4 sts=4 fo=croqn
-"autocmd FileType erlang set fo-=t fo+=croql sw=4 sts=4
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType="context"
+
 autocmd FileType erlang set sw=4 sts=4
 autocmd FileType perl   set fo-=t fo+=croql
 autocmd FileType lisp   set fo-=t fo+=croql
@@ -129,5 +124,6 @@ autocmd FileType objc   set ts=4 sw=4 sts=4
 autocmd BufRead,BufNewFile *.md set ft=markdown
 autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
+autocmd BufRead,BufNewFile Podfile set ft=ruby
 autocmd BufRead,BufNewFile *.asd set ft=lisp
 autocmd BufRead,BufNewFile *.arc set ft=lisp
