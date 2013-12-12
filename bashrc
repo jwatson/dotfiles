@@ -85,6 +85,7 @@ fi
 [[ $(which brew) ]] && prefix=$(brew --prefix) || prefix=""
 if [ -f $prefix/etc/bash_completion ]; then
     . $prefix/etc/bash_completion
+    . `brew --repository`/Library/Contributions/brew_bash_completion.sh
 fi
 
 export HISTSIZE=10000
@@ -104,4 +105,4 @@ export PROJECT_HOME=$HOME/projects
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 
 # Enable autoenv
-[ -f /usr/local/bin/activate.sh ] && . /usr/local/bin/activate.sh
+[ -f ~/.autoenv/activate.sh ] && . ~/.autoenv/activate.sh
