@@ -58,7 +58,7 @@ pypkg()
 
 
 # Switch AWS credentials.
-aws()
+aws_creds()
 {
     if [ -f ~/.awskeys/$1 ]; then
         echo -e "Switching to \033[33m$1\033[0m AWS credentials."
