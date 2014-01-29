@@ -2,7 +2,8 @@ set nocompatible
 filetype off
 
 " ========================================================================
-" Vundle stuff
+" Vundle stuff. No inline comments here because of
+" https://github.com/gmarik/vundle/issues/13
 " ========================================================================
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
@@ -10,49 +11,93 @@ call vundle#rc()
 " Let Vundle manage Vundle (required)!
 Bundle 'gmarik/vundle'
 
-" My bundles
+" General editor stuff.
+" ========================================================================
+" Show Git diffs in the gutter.
 Bundle 'airblade/vim-gitgutter'
+" Solarized color theme.
 Bundle 'altercation/vim-colors-solarized'
+" Use <Tab> for insert completion.
 Bundle 'ervandew/supertab'
-Bundle 'godlygeek/tabular'
-Bundle 'groenewege/vim-less'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'koron/nyancat-vim'
+" The Silver Searcher!
 Bundle 'rking/ag.vim'
+" Run file through external syntax checker & display errors.
 Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-foreplay'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-rails'
+" Enable repeating supported plugin maps with `.`.
 Bundle 'tpope/vim-repeat'
+" Easily add, delete, change quotes, parens, etc. in pairs.
 Bundle 'tpope/vim-surround'
+" Handy bracket mappings.
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/ruby-matchit'
+" Fast file shortcuts.
 Bundle 'wincent/Command-T'
 
-syntax on
-filetype plugin indent on
+" General development.
+" ========================================================================
+" Wisely add `end` in Ruby. Similar for Bash, C/C++, Lua.
+Bundle 'tpope/vim-endwise'
+" The best Git wrapper of all time.
+Bundle 'tpope/vim-fugitive'
+" Markdown syntax & highlighting.
+Bundle 'tpope/vim-markdown'
+
+" Web development.
+" ========================================================================
+" Less syntax highlighting.
+Bundle 'groenewege/vim-less'
+" Coffescript indent & syntax highlighting.
+Bundle 'kchmck/vim-coffee-script'
+" HAML, SASS, and SCSS syntax highlighting.
+Bundle 'tpope/vim-haml'
+" Sensible comment toggling.
+Bundle 'tomtom/tcomment_vim'
+
+" Python development.
+" ========================================================================
+Bundle 'hynek/vim-python-pep8-indent'
+
+" Ruby development.
+" ========================================================================
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'vim-scripts/ruby-matchit'
+
+" Clojure development.
+" ========================================================================
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-classpath'
+Bundle 'tpope/vim-fireplace'
+
+" Fun.
+" ========================================================================
+Bundle 'koron/nyancat-vim'
+
+
+" ============================================================================
+" Python stuff.
+" ============================================================================
+syntax on                  " Enable syntax highlighting.
+filetype plugin indent on  " Enable filetype-specific indenting and plugins.
+
+" Autoindent with 4 spaces, always expand tabs.
+autocmd FileType python setlocal ai ts=8 sw=4 sts=4 et
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType="context"
+" ============================================================================
 
 set noautowrite
-set nobackup
-set nowritebackup
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+set directory=~/.tmp            " Don't clutter up dirs with swp and tmp files.
+set backupdir=~/.tmp
 
-set backspace=indent,eol,start
-set noerrorbells
-set visualbell
-set t_vb=
+set title                       " Set the terminal title.
+set ignorecase smartcase        " Ignore case in patterns when they are all lowercase.
+set laststatus=2                " Always show the status line.
+set report=0                    " Always show the number of lines that have changed.
+set ruler                       " Always show the cursor position.
 
-set title
-set ignorecase smartcase
-set laststatus=2
-set report=0
-set ruler
-
+set autoindent
 set expandtab
 set smarttab
 set shiftwidth=4
@@ -60,58 +105,41 @@ set tabstop=8
 
 set showcmd
 set showmode
-set showmatch
-set matchtime=5
-set ttyfast
-set ttybuiltin
+set showmatch                   " Show matching parentheses...
+set matchtime=5                 " ...for 5 tenths of a second.
 set textwidth=78
-"set nowrap
-set whichwrap=<,>
-set wildchar=<TAB>
-set undolevels=1000
+set nowrap
 set hlsearch
-set incsearch
-set viminfo='100,f1
-set number
-
-set complete=.,b,u,]
-set wildmode=longest,list:longest
+set incsearch                   " Show search text as it is being typed.
+set gdefault                    " Assume the `/g` flag on `:s` substitutions.
+set viminfo+=!
+set number                      " Show line numbers.
+set noesckeys                   " Get rid of the delay when hitting esc.
+set shiftround                  " When at 3 spaces and I hit >>, go to 4, not 5.
 
 set tags=~/.mytags
 
-map :W :wa
-map :Q :qa
-map :waq :wq
-map <F1> :bp<Return>
-map <F2> :bn<Return>
-map th :tabprev<CR>
-map tl :tabnext<CR>
+let mapleader = ","
+map <Leader>t :w <CR> :!nosetests <CR>
+map  :W :wa
+map  :Q :qa
+map  :waq :wq
+map  <F1> :bp<Return>
+map  <F2> :bn<Return>
+map  th :tabprev<CR>
+map  tl :tabnext<CR>
 imap <F1> <Esc>:bp<Return>
 imap <F2> <Esc>:bn<Return>
 imap <Tab> <C-P>
-map <C-h> :nohl<cr>
-map <C-s> <esc>:w<CR>
+map  <C-h> :nohl<cr>
+map  <C-s> <esc>:w<CR>
 imap <C-s> <esc>:w<CR>
-map <C-t> <esc>:tabnew<CR>
-nmap ,t :!(cd %:p:h;ctags *.[ch])&
+map  <C-t> <esc>:tabnew<CR>
+"nmap ,t :!(cd %:p:h;ctags *.[ch])&
 
-set t_Co=256
-"" turn on syntax highligting only when the terminal supports colors
-if &t_Co > 1
-    syntax enable " also triggers ':filetype on'
-endif
-
-"set g:zenburn_high_Contrast=0
-"set g:zenburn_old_Visual=1
-"colorscheme zenburn
 set background=dark
-set t_Co=16
 let g:solarized_menu=0
 colorscheme solarized
-
-autocmd FileType python setlocal ts=4 et sw=4 sts=4 fo=croqn
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType="context"
 
 autocmd FileType erlang set sw=4 sts=4
 autocmd FileType perl   set fo-=t fo+=croql
@@ -121,9 +149,9 @@ autocmd FileType xml    set sw=2 sts=2
 autocmd FileType cpp    set sw=2 sts=2
 autocmd FileType objc   set ts=4 sw=4 sts=4
 
-autocmd BufRead,BufNewFile *.md set ft=markdown
-autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
-autocmd BufRead,BufNewFile Vagrantfile set ft=ruby
-autocmd BufRead,BufNewFile Podfile set ft=ruby
-autocmd BufRead,BufNewFile *.asd set ft=lisp
-autocmd BufRead,BufNewFile *.arc set ft=lisp
+autocmd BufRead,BufNewFile     *.md        set ft=markdown
+autocmd BufNewFile,BufReadPost *.coffee    setl shiftwidth=2 expandtab
+autocmd BufRead,BufNewFile     Vagrantfile set ft=ruby
+autocmd BufRead,BufNewFile     Podfile     set ft=ruby
+autocmd BufRead,BufNewFile     *.asd       set ft=lisp
+autocmd BufRead,BufNewFile     *.arc       set ft=lisp
