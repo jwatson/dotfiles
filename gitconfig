@@ -49,3 +49,5 @@
 #	trustExitCode = true
 [mergetool]
 	prompt = false
+[heroku]
+	account = photodojo
