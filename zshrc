@@ -21,7 +21,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="~/.rbenv/shims:~/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Add NPM modules to the path if it is installed.
@@ -39,4 +39,7 @@ export LSCOLORS="exgxcxdxcxegedabagacad"
 # Disable the prompt munging when activating a virtualenv.
 export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
-eval "$(rbenv init -)"
+# Load rbenv if available.
+if which rbenv &>/dev/null; then
+  eval "$(rbenv init -)"
+fi
