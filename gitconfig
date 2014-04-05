@@ -1,11 +1,12 @@
 [user]
-	name = John Watson
-	email = john@photodojo.org
+        name = John Watson
+        email = john@photodojo.org
 [alias]
         co = checkout
         cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
         dt = difftool
         mt = mergetool
+        pr = !gh pull-request
 [color]
         ui = auto
 [color "branch"]
@@ -25,8 +26,8 @@
         autosetupmerge = true
         autosetuprebase = always
 [core]
-	quotepath = false
-	excludesfile = /Users/john/.gitignore
+        quotepath = false
+        excludesfile = /Users/john/.gitignore
         editor = vim --noplugin
 [push]
         default = current
@@ -37,7 +38,7 @@
 [merge]
         tool = araxis
 #[diff]
-#	tool = Kaleidoscope
+        tool = Kaleidoscope
 #[merge]
 #	tool = Kaleidoscope
 #[difftool]
@@ -48,6 +49,6 @@
 #	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 #	trustExitCode = true
 [mergetool]
-	prompt = false
+        prompt = false
 [heroku]
-	account = photodojo
+        account = photodojo
