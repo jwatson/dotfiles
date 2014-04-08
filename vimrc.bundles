@@ -32,7 +32,9 @@ Bundle 'tpope/vim-unimpaired'
 " Fast file shortcuts.
 Bundle 'wincent/Command-T'
 " Sensible comment toggling.
-Bundle 'vim-scripts/tComment'
+Bundle 'tomtom/tcomment_vim'
+" Seamless navigation between tmux panes and vim splits
+Bundle 'christoomey/vim-tmux-navigator'
 
 " General development.
 " ========================================================================
@@ -45,6 +47,8 @@ Bundle 'tpope/vim-markdown'
 " Dash support.
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
+" Create shortcuts for selecting blocks of text.
+Bundle 'kana/vim-textobj-user'
 
 " Web development.
 " ========================================================================
@@ -59,22 +63,13 @@ Bundle 'mustache/vim-mustache-handlebars'
 " HTML 5 syntax.
 Bundle 'othree/html5.vim'
 
-" Python development.
-" ========================================================================
-"Bundle 'hynek/vim-python-pep8-indent'
-
 " Ruby development.
 " ========================================================================
 Bundle 'tpope/vim-cucumber'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ruby-matchit'
-
-" Clojure development.
-" ========================================================================
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-classpath'
-Bundle 'tpope/vim-fireplace'
+Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " Fun.
 " ========================================================================
