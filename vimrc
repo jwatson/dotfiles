@@ -119,9 +119,9 @@ let g:html_indent_tags = 'li\|p'
 
 let mapleader = " "
 map <leader>t :w <CR> :!nosetests <CR>
-map  :W :wa
-map  :Q :qa
-map  :waq :wq
+map :W :wa
+map :Q :qa
+map :waq :wq
 map <silent> <leader>h :nohls <CR>
 
 " Tab navigation.
@@ -143,3 +143,8 @@ nnoremap <Left> :echoe "Use h"<CR>
 nnoremap <Right> :echoe "Use l"<CR>
 nnoremap <Up> :echoe "Use k"<CR>
 nnoremap <Down> :echoe "Use j"<CR>
+
+" Map C-s to save. Note that this requires your bashrc or zshrc to disable
+" flow control.
+map  <C-s> <esc>:w<CR>
+imap <C-s> <esc>:w<CR>
