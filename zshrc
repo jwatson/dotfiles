@@ -39,7 +39,15 @@ export LSCOLORS="exgxcxdxcxegedabagacad"
 # Disable the prompt munging when activating a virtualenv.
 export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
+# Load aliases.
+[[ -f ~/.zsh/aliases ]] && source ~/.zsh/aliases
+
 # Load rbenv if available.
 if which rbenv &>/dev/null; then
   eval "$(rbenv init -)"
+fi
+
+# Alias git to gh if available.
+if which gh &>/dev/null; then
+  eval "$(gh alias -s)"
 fi

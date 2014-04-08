@@ -1,0 +1,3 @@
+alias bc='bc -lq'
+alias c='clear'
+alias lh='ls -sh'
