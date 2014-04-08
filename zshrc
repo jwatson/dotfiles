@@ -21,8 +21,17 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Disable flow control commands (keeps C-s from freezing everything)
+stty start undef
+stty stop undef
+
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
+
+# Load rbenv if available.
+if which rbenv &>/dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # Add NPM modules to the path if it is installed.
 [[ -s /usr/local/share/npm ]] && export PATH="$PATH:/usr/local/share/npm/bin"
@@ -41,13 +50,3 @@ export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
 # Load aliases.
 [[ -f ~/.zsh/aliases ]] && source ~/.zsh/aliases
-
-# Load rbenv if available.
-if which rbenv &>/dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-# Alias git to gh if available.
-if which gh &>/dev/null; then
-  eval "$(gh alias -s)"
-fi

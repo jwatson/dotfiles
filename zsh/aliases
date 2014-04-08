@@ -1,3 +1,8 @@
 alias bc='bc -lq'
 alias c='clear'
 alias lh='ls -sh'
+
+# Alias git to gh if available.
+if which gh &>/dev/null; then
+  eval "$(gh alias -s)"
+fi
