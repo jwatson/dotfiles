@@ -1,12 +1,10 @@
-*.DS_Store
+.DS_Store
 *.sw[nop]
 *.pyc
 .bundle
 .env
 db/*.sqlite3
 log/*.log
-rerun.txt
 tags
 tmp/**/*
 !tmp/cache/.keep
-zeus.json
