@@ -1,6 +1,8 @@
 alias bc='bc -lq'
 alias c='clear'
+alias grz='git config user.email "john.watson@raizlabs.com"'
 alias lh='ls -sh'
+alias codereview='vim ~/Dropbox/Raizlabs/code-review-checklist.md'
 
 # Alias git to gh if available.
 if which gh &>/dev/null; then
