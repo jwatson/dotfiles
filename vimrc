@@ -19,8 +19,10 @@ set t_vb=
 
 set title                          " Set the terminal title.
 set ignorecase smartcase           " Ignore case in patterns when they are all lowercase.
-set laststatus=2                   " Always show the status line.
 set report=0                       " Always show the number of lines that have changed.
+
+set laststatus=2                   " Always show the status line.
+set statusline=%f\ %m\ %r\ Col:\ %v
 
 set autoindent
 set expandtab
@@ -43,6 +45,7 @@ set noesckeys                      " Get rid of the delay when hitting esc.
 set shiftround                     " When at 3 spaces and I hit >>, go to 4, not 5.
 set list listchars=tab:»·,trail:·  " Display extra whitespace.
 set ruler                          " Always show the cursor position.
+set formatoptions+=t
 
 set tags=~/.mytags
 
@@ -50,35 +53,40 @@ set background=dark
 let g:solarized_menu=0
 colorscheme solarized
 
-augroup vimrcEx
-    autocmd!
+augroup filetypes
+  autocmd!
 
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or
+  " when inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+        \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
 
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it for commit messages, when the position is invalid, or
-    " when inside an event handler (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-      \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-      \   exe "normal g`\"" |
-      \ endif
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
 
-  " Set syntax highlighting for specific file types.
-  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  " Use real tabs in Makefiles.
+  autocmd FileType make setlocal noexpandtab
 
-  " Enable spellchecking for Markdown.
-  autocmd FileType markdown setlocal spell
+  " Set the Ruby filetype for a number of common Ruby files without .rb
+  autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set filetype=ruby
 
-  " Automatically wrap at 80 characters for Markdown.
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  " Treat JSON files like JavaScript
+  autocmd BufNewFile,BufRead *.json set filetype=javascript
+
+  " Make sure all mardown files have the correct filetype set and setup wrapping and spellcheck.
+  autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set filetype=markdown
+  autocmd FileType markdown setlocal wrap linebreak nolist spell
 
 augroup END
 
 augroup python
   autocmd!
 
-  autocmd FileType python setlocal shiftwidth=4 textwidth=79
+  " Make Python follow PEP8 for whitespace (http://www.python.org/dev/peps/pep-0008/).
+  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
   autocmd FileType python set omnifunc=pythoncomplete#Complete
 
   let g:SuperTabDefaultCompletionType="context"
