@@ -7,6 +7,7 @@
         dt = difftool
         mt = mergetool
         pr = !gh pull-request
+	ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
 [color]
         ui = auto
 [color "branch"]
@@ -33,22 +34,18 @@
         default = current
 [github]
         user = jwatson
-[diff]
-        tool = araxis
-[merge]
-        tool = araxis
-#[diff]
-        tool = Kaleidoscope
-#[merge]
-#	tool = Kaleidoscope
-#[difftool]
-#	prompt = false
-#[difftool "Kaleidoscope"]
-#	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-#[mergetool "Kaleidoscope"]
-#	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-#	trustExitCode = true
-[mergetool]
-        prompt = false
 [heroku]
         account = photodojo
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[mergetool]
+	prompt = false
+[merge]
+	tool = Kaleidoscope
