@@ -90,6 +90,18 @@ augroup python
   autocmd FileType python set omnifunc=pythoncomplete#Complete
 
   let g:SuperTabDefaultCompletionType="context"
+
+  " Add the virtualenv's site packages to vim's path.
+  py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
 augroup END
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -119,13 +131,14 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
-" configure syntastic syntax checking to check on open as well as save
+" Configure syntastic syntax checking to check on open as well as save.
 let g:syntastic_check_on_open=1
 
 " Treat <li> and <p> tags like the block tags they are.
 let g:html_indent_tags = 'li\|p'
 
 let mapleader = " "
+map <leader>c :w !pbcopy<CR><CR>
 map <leader>t :w <CR> :!nosetests <CR>
 map :W :wa
 map :Q :qa
