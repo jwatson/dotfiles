@@ -28,7 +28,7 @@
         autosetuprebase = always
 [core]
         quotepath = false
-        excludesfile = /Users/john/.gitignore
+	excludesfile = ~/.gitignore
         editor = vim --noplugin
 [push]
         default = current
