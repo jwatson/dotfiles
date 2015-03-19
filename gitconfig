@@ -7,7 +7,11 @@
         dt = difftool
         mt = mergetool
         pr = !gh pull-request
-	ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
+        slog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
+        #mpr = "!f() { local BRANCH=`git symbolic-ref -q --short HEAD` && \
+    #      git fetch origin pull/$1/
+    #          }; f"
+        ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
 [color]
         ui = auto
 [color "branch"]
@@ -28,7 +32,7 @@
         autosetuprebase = always
 [core]
         quotepath = false
-	excludesfile = ~/.gitignore
+        excludesfile = ~/.gitignore
         editor = vim --noplugin
 [push]
         default = current
@@ -37,15 +41,15 @@
 [heroku]
         account = photodojo
 [difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+        cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [diff]
-	tool = Kaleidoscope
+        tool = Kaleidoscope
 [difftool]
-	prompt = false
+        prompt = false
 [mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
+        cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+        trustExitCode = true
 [mergetool]
-	prompt = false
+        prompt = false
 [merge]
-	tool = Kaleidoscope
+        tool = Kaleidoscope

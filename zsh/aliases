@@ -1,8 +1,10 @@
 alias bc='bc -lq'
 alias c='clear'
 alias grz='git config user.email "john.watson@raizlabs.com"'
+alias gdt='git difftool'
 alias lh='ls -sh'
 alias codereview='vim ~/Dropbox/Raizlabs/code-review-checklist.md'
+alias startproject='django-admin.py startproject --template=~/projects/oss/django-twoscoops-project --extension=py,rst,html'
 
 # Alias git to gh if available.
 if which gh &>/dev/null; then

@@ -71,7 +71,7 @@ augroup filetypes
   autocmd FileType make setlocal noexpandtab
 
   " Set the Ruby filetype for a number of common Ruby files without .rb
-  autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,config.ru,*.rake} set filetype=ruby
+  autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,Podfile,config.ru,*.rake} set filetype=ruby
 
   " Treat JSON files like JavaScript
   autocmd BufNewFile,BufRead *.json set filetype=javascript
@@ -85,10 +85,12 @@ augroup END
 augroup python
   autocmd!
 
-  " Make Python follow PEP8 for whitespace (http://www.python.org/dev/peps/pep-0008/).
-  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+  " Make Python mostly follow PEP8 for whitespace (http://www.python.org/dev/peps/pep-0008/).
+  " The 79-character line width is a bit outdated, I override it in all my projects.
+  autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 textwidth=120
   autocmd FileType python set omnifunc=pythoncomplete#Complete
 
+  let python_highlight_all=1
   let g:SuperTabDefaultCompletionType="context"
 
   " Add the virtualenv's site packages to vim's path.

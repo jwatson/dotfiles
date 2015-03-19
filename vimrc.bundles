@@ -20,7 +20,7 @@ Bundle 'altercation/vim-colors-solarized'
 " Use <Tab> for insert completion.
 Bundle 'ervandew/supertab'
 " The Silver Searcher!
-Bundle 'rking/ag.vim'
+"Bundle 'rking/ag.vim'
 " Run file through external syntax checker & display errors.
 Bundle 'scrooloose/syntastic'
 " Enable repeating supported plugin maps with `.`.
