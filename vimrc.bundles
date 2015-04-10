@@ -71,8 +71,4 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'vim-scripts/ruby-matchit'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
-" Fun.
-" ========================================================================
-Bundle 'koron/nyancat-vim'
-
 filetype on
