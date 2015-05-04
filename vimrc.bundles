@@ -1,74 +1,94 @@
 set nocompatible
+filetype off
 
 " ========================================================================
-" Vundle stuff. No inline comments here because of
-" https://github.com/gmarik/vundle/issues/13
+" Vundle stuff.
 " ========================================================================
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Let Vundle manage Vundle (required)!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
+" ========================================================================
 " General editor stuff.
 " ========================================================================
 " Show Git diffs in the gutter.
-Bundle 'airblade/vim-gitgutter'
-" Solarized color theme.
-Bundle 'altercation/vim-colors-solarized'
-" Use <Tab> for insert completion.
-Bundle 'ervandew/supertab'
-" The Silver Searcher!
-"Bundle 'rking/ag.vim'
-" Run file through external syntax checker & display errors.
-Bundle 'scrooloose/syntastic'
-" Enable repeating supported plugin maps with `.`.
-Bundle 'tpope/vim-repeat'
-" Easily add, delete, change quotes, parens, etc. in pairs.
-Bundle 'tpope/vim-surround'
-" Handy bracket mappings.
-Bundle 'tpope/vim-unimpaired'
-" Fast file shortcuts.
-Bundle 'wincent/Command-T'
-" Sensible comment toggling.
-Bundle 'tomtom/tcomment_vim'
-" Seamless navigation between tmux panes and vim splits
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'airblade/vim-gitgutter'
 
+" Solarized color theme.
+Plugin 'altercation/vim-colors-solarized'
+
+" Show and delete trailing whitespace.
+Plugin 'bronson/vim-trailing-whitespace'
+
+" Use <Tab> for insert completion.
+Plugin 'ervandew/supertab'
+
+" The Silver Searcher!
+Plugin 'rking/ag.vim'
+
+" Run file through external syntax checker & display errors.
+Plugin 'scrooloose/syntastic'
+
+" Enable repeating supported plugin maps with `.`.
+Plugin 'tpope/vim-repeat'
+
+" Easily add, delete, change quotes, parens, etc. in pairs.
+Plugin 'tpope/vim-surround'
+
+" Handy bracket mappings.
+Plugin 'tpope/vim-unimpaired'
+
+" Fast file shortcuts.
+Plugin 'wincent/Command-T'
+
+" Sensible comment toggling.
+Plugin 'tomtom/tcomment_vim'
+
+" Seamless navigation between tmux panes and vim splits
+Plugin 'christoomey/vim-tmux-navigator'
+
+" ========================================================================
 " General development.
 " ========================================================================
-" Wisely add `end` in Ruby. Similar for Bash, C/C++, Lua.
-Bundle 'tpope/vim-endwise'
-" The best Git wrapper of all time.
-Bundle 'tpope/vim-fugitive'
-" Markdown syntax & highlighting.
-Bundle 'tpope/vim-markdown'
-" Dash support.
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-" Create shortcuts for selecting blocks of text.
-Bundle 'kana/vim-textobj-user'
+" Easily align blocks of code.
+Plugin 'junegunn/vim-easy-align'
 
+" Wisely add `end` in Ruby. Similar for Bash, C/C++, Lua.
+Plugin 'tpope/vim-endwise'
+
+" The best Git wrapper of all time.
+Plugin 'tpope/vim-fugitive'
+
+" Markdown syntax & highlighting.
+Plugin 'tpope/vim-markdown'
+
+" Dash support.
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+
+" Create shortcuts for selecting blocks of text.
+Plugin 'kana/vim-textobj-user'
+
+" ========================================================================
 " Web development.
 " ========================================================================
 " Less syntax highlighting.
-Bundle 'groenewege/vim-less'
+Plugin 'groenewege/vim-less'
+
 " Coffescript indent & syntax highlighting.
-Bundle 'kchmck/vim-coffee-script'
+Plugin 'kchmck/vim-coffee-script'
+
 " HAML, SASS, and SCSS syntax highlighting.
-Bundle 'tpope/vim-haml'
+Plugin 'tpope/vim-haml'
+
 " Handlebars!
-Bundle 'mustache/vim-mustache-handlebars'
+Plugin 'mustache/vim-mustache-handlebars'
+
 " HTML 5 syntax.
-Bundle 'othree/html5.vim'
+Plugin 'othree/html5.vim'
 
-" Ruby development.
-" ========================================================================
-Bundle 'tpope/vim-cucumber'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'vim-scripts/ruby-matchit'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+call vundle#end()
 
-filetype on
+filetype plugin indent on

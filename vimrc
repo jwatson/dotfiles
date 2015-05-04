@@ -7,7 +7,8 @@ if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-filetype plugin indent on  " Enable filetype-specific indenting and plugins.
+" This is handled in `vimrc.bundles`.
+" filetype plugin indent on  " Enable filetype-specific indenting and plugins.
 
 set noautowrite
 set backspace=indent,eol,start     " Allow backspacing over everything in insert mode.
