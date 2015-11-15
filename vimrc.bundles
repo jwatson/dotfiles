@@ -23,7 +23,10 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bronson/vim-trailing-whitespace'
 
 " Use <Tab> for insert completion.
-Plugin 'ervandew/supertab'
+"Plugin 'ervandew/supertab'
+
+" Code completion engine.
+Plugin 'Valloric/YouCompleteMe'
 
 " The Silver Searcher!
 Plugin 'rking/ag.vim'
