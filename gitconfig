@@ -7,10 +7,8 @@
         dt = difftool
         mt = mergetool
         pr = !gh pull-request
+        lsd = log --graph --decorate --pretty=oneline --abbrev-commit --all
         slog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
-        #mpr = "!f() { local BRANCH=`git symbolic-ref -q --short HEAD` && \
-    #      git fetch origin pull/$1/
-    #          }; f"
         ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
 [color]
         ui = auto
@@ -53,3 +51,7 @@
         prompt = false
 [merge]
         tool = Kaleidoscope
+[filter "lfs"]
+        clean = git-lfs clean %f
+        smudge = git-lfs smudge %f
+        required = true
