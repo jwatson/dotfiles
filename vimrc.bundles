@@ -74,6 +74,9 @@ Plugin 'rizzatti/dash.vim'
 " Create shortcuts for selecting blocks of text.
 Plugin 'kana/vim-textobj-user'
 
+" Swift syntax support.
+Plugin 'toyamarinyon/vim-swift'
+
 " ========================================================================
 " Web development.
 " ========================================================================
