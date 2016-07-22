@@ -65,6 +65,18 @@ augroup filetypes
         \   exe "normal g`\"" |
         \ endif
 
+  " Pinched this from Joel.
+  " http://www.joeloliveira.com/2016/01/05/make-vim-recognize-your-shell-scripts.html
+  autocmd BufRead,BufNewFile,BufWrite *
+        \ if getline(1) =~ "#!/bin/bash" |
+        \   set ft=sh |
+        \ endif
+
+  autocmd BufRead,BufNewFile,BufWrite *
+        \ if getline(1) =~ "#!/bin/zsh" |
+        \   set ft=zsh |
+        \ endif
+
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
 
