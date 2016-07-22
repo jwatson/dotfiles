@@ -53,3 +53,6 @@ export VIRTUAL_ENV_DISABLE_PROMPT="1"
 
 # Load functions.
 [[ -f ~/.zsh/functions ]] && source ~/.zsh/functions
+
+# added by travis gem
+[ -f /Users/jwatson/.travis/travis.sh ] && source /Users/jwatson/.travis/travis.sh
