@@ -22,9 +22,6 @@ Plugin 'altercation/vim-colors-solarized'
 " Show and delete trailing whitespace.
 Plugin 'bronson/vim-trailing-whitespace'
 
-" Use <Tab> for insert completion.
-"Plugin 'ervandew/supertab'
-
 " Code completion engine.
 Plugin 'Valloric/YouCompleteMe'
 
@@ -75,7 +72,7 @@ Plugin 'rizzatti/dash.vim'
 Plugin 'kana/vim-textobj-user'
 
 " Swift syntax support.
-Plugin 'toyamarinyon/vim-swift'
+Plugin 'keith/swift.vim'
 
 " ========================================================================
 " Web development.
@@ -94,6 +91,9 @@ Plugin 'mustache/vim-mustache-handlebars'
 
 " HTML 5 syntax.
 Plugin 'othree/html5.vim'
+
+" API Blueprint syntax.
+Plugin 'kylef/apiblueprint.vim'
 
 call vundle#end()
 

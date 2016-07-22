@@ -72,10 +72,7 @@ augroup filetypes
   autocmd FileType make setlocal noexpandtab
 
   " Set the Ruby filetype for a number of common Ruby files without .rb
-  autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,Podfile,config.ru,*.rake} set filetype=ruby
-
-  " Treat JSON files like JavaScript
-  autocmd BufNewFile,BufRead *.json set filetype=javascript
+  autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,Procfile,Guardfile,Podfile,*.podspec,Fastfile,config.ru,*.rake} set filetype=ruby
 
   " Make sure all mardown files have the correct filetype set and setup wrapping and spellcheck.
   autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} set filetype=markdown
@@ -136,6 +133,7 @@ inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 " Configure syntastic syntax checking to check on open as well as save.
 let g:syntastic_check_on_open=1
+let g:syntastic_javascript_checkers = ['standard']
 
 " Treat <li> and <p> tags like the block tags they are.
 let g:html_indent_tags = 'li\|p'
