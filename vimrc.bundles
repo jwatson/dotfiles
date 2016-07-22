@@ -25,9 +25,6 @@ Plugin 'bronson/vim-trailing-whitespace'
 " Code completion engine.
 Plugin 'Valloric/YouCompleteMe'
 
-" The Silver Searcher!
-Plugin 'rking/ag.vim'
-
 " Run file through external syntax checker & display errors.
 Plugin 'scrooloose/syntastic'
 
