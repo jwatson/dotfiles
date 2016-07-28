@@ -1,0 +1,4 @@
+EXCLUDES="LICENSE README.md Brewfile setup"
+DOTFILES_DIRS="$DOTFILES"
+TAGS="ag ctags git postgres python ruby scripts swift tmux vim xcode zsh"
+UNDOTTED="Library"

@@ -1,0 +1,34 @@
+function! g:Include(file)
+  if filereadable(expand(a:file))
+    execute 'source' a:file
+  endif
+endfunction
+
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.vim/' . a:directory . '/*.vim'
+  for config_file in split(glob(directory_splat), '\n')
+    call Include(config_file)
+  endfor
+endfunction
+
+call plug#begin()
+call s:SourceConfigFilesIn('plugins')
+call plug#end()
+
+call s:SourceConfigFilesIn('config')
+call s:SourceConfigFilesIn('functions')
+
+set nobackup            " Don't make a backup before overwriting a file.
+set nowritebackup       " And again.
+set noswapfile          " Don't use swapfiles.
+set hidden              " Don't kill unwritten buffers when hidden.
+
+set tabstop=2           " Global tab width.
+set shiftwidth=2        " And again, related.
+set expandtab           " Use spaces instead of tabs.
+set wrap                " Turn on line wrapping.
+set nojoinspaces        " Don't add two spaces after punctuation when joining lines.
+
+set noesckeys           " Eliminate the 1s delay after hitting escape.
+set secure              " Don't let external configs do scary shit
+set exrc                " Load local vimrc if found

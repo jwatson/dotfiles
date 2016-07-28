@@ -1,27 +1,32 @@
-John Watson's Config Files
-==========================
+# John Watson's Dotfiles
 
 These are the config files I use. I've tried to make things work equally
 well on OS X and Linux.
 
-Installation
-------------
+## Installation
 
-From scratch:
+You'll want to clone the repo into `~/.dotfiles`:
 
-    $ sudo easy_install pip
-    $ pip install virtualenv virtualenvwrapper
-    $ mkvirtualenv $USER
-    $ pip install paver
+```sh
+$ git clone https://github.com/jwatson/dotfiles .dotfiles
+```
 
-After that:
+Next, run `setup/setup` to install everything, with dependencies.
 
-    $ git clone https://github.com/jwatson/dotfiles.git ~/.dotfiles
-    $ cd ~/.dotfiles
-    $ paver install
+## rcm
 
-Vim plugins are managed with vundle, which you'll need to install:
+This repo uses [rcm](https://github.com/thoughtbot/rcm) for file management,
+which I highly recommend. It also makes use of rcm's tag feature, which allows
+you to pull down select parts of the repo if you wish.
 
-    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+If you'd rather just create the directory structure and symlinks instead of
+installing Homebrew dependencies too, you can run the following:
 
-Then run `:BundleInstall` in vim to install the packages listed in `~/.vimrc`.
+```sh
+$ rcup -v -d ~/.dotfiles
+```
+
+## Acknowledgements
+
+Blatantly stolen from Gordon Fontenote's
+[dotfiles](https://github.com/gfontenot/dotfiles), and then customized a bit.
