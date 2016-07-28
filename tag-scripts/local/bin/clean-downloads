@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Move anything older than 12 hours into the trash.
+find ~/Downloads -mindepth 1 -maxdepth 1 -amin +720 -exec mv {} ~/.Trash \;
