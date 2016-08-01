@@ -6,4 +6,5 @@ brew update
 brew upgrade --all
 brew cleanup
 
+vim +PlugUpgrade +qall
 vim +PlugUpdate +qall
