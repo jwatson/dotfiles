@@ -7,9 +7,6 @@ set smartcase
 " Default to global substitutions on lines
 set gdefault
 
-" Use relative line numbers
-set relativenumber
-
 " Display the current line number
 set number
 

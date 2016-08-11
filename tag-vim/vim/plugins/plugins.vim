@@ -1,6 +1,9 @@
 " Basic defaults.
 Plug 'tpope/vim-sensible'
 
+" Show git diffs in the gutter.
+Plug 'airblade/vim-gitgutter'
+
 " Fuzzy finder for files.
 Plug 'kien/ctrlp.vim'
 

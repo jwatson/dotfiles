@@ -18,17 +18,18 @@ call plug#end()
 call s:SourceConfigFilesIn('config')
 call s:SourceConfigFilesIn('functions')
 
-set nobackup            " Don't make a backup before overwriting a file.
-set nowritebackup       " And again.
-set noswapfile          " Don't use swapfiles.
-set hidden              " Don't kill unwritten buffers when hidden.
+set backspace=indent,eol,start  " Allow backspacing over everything in insert mode.
+set nobackup                    " Don't make a backup before overwriting a file.
+set nowritebackup               " And again.
+set noswapfile                  " Don't use swapfiles.
+set hidden                      " Don't kill unwritten buffers when hidden.
 
-set tabstop=2           " Global tab width.
-set shiftwidth=2        " And again, related.
-set expandtab           " Use spaces instead of tabs.
-set wrap                " Turn on line wrapping.
-set nojoinspaces        " Don't add two spaces after punctuation when joining lines.
+set tabstop=2                   " Global tab width.
+set shiftwidth=2                " And again, related.
+set expandtab                   " Use spaces instead of tabs.
+set wrap                        " Turn on line wrapping.
+set nojoinspaces                " Don't add two spaces after punctuation when joining lines.
 
-set noesckeys           " Eliminate the 1s delay after hitting escape.
-set secure              " Don't let external configs do scary shit
-set exrc                " Load local vimrc if found
+set noesckeys                   " Eliminate the 1s delay after hitting escape.
+set secure                      " Don't let external configs do scary shit
+set exrc                        " Load local vimrc if found
