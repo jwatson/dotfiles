@@ -42,5 +42,13 @@ if which rbenv &>/dev/null; then
   eval "$(rbenv init -)"
 fi
 
+# Load pyenv if available.
+if which pyenv &>/dev/null; then
+  eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)";
+fi
+
 # added by travis gem
 [ -f /Users/jwatson/.travis/travis.sh ] && source /Users/jwatson/.travis/travis.sh
