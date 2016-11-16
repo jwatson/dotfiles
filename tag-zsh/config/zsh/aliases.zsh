@@ -1,5 +1,6 @@
 alias bc='bc -lq'
 alias be='bundle exec'
+alias bi='bundle install'
 alias c='clear'
 alias grz='git config user.email "john.watson@raizlabs.com"'
 alias gdt='git difftool'
