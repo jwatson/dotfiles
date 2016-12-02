@@ -37,9 +37,10 @@ export VIRTUAL_ENV_DISABLE_PROMPT="1"
 # Source additional config files.
 for config_file (~/.config/zsh/*.zsh) source $config_file
 
-# Load rbenv if available.
-if which rbenv &>/dev/null; then
-  eval "$(rbenv init -)"
+# Load chruby if available
+if [[ -e /usr/local/opt/chruby ]]; then
+  source /usr/local/opt/chruby/share/chruby/chruby.sh
+  source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
 
 # Load pyenv if available.
