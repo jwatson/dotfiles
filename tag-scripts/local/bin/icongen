@@ -1,0 +1,30 @@
+#!/bin/sh
+
+set -euo pipefail
+IFS=$'\n\t'
+
+if [ $# -ne 1 ]; then
+  echo "USAGE: $0 <hex-color>"
+  echo
+  echo "Example:"
+  echo "    $ $0 ff0000"
+  echo
+  exit
+fi
+
+convert -size 20x20   -strip xc:#$1 AppIcon-20.png
+convert -size 40x40   -strip xc:#$1 AppIcon-20@2x.png
+convert -size 60x60   -strip xc:#$1 AppIcon-20@3x.png
+convert -size 29x29   -strip xc:#$1 AppIcon-29.png
+convert -size 58x58   -strip xc:#$1 AppIcon-29@2x.png
+convert -size 87x87   -strip xc:#$1 AppIcon-29@3x.png
+convert -size 40x40   -strip xc:#$1 AppIcon-40.png
+convert -size 80x80   -strip xc:#$1 AppIcon-40@2x.png
+convert -size 120x120 -strip xc:#$1 AppIcon-40@3x.png
+convert -size 57x57   -strip xc:#$1 AppIcon-57.png
+convert -size 114x114 -strip xc:#$1 AppIcon-57@2x.png
+convert -size 120x120 -strip xc:#$1 AppIcon-60@2x.png
+convert -size 180x180 -strip xc:#$1 AppIcon-60@3x.png
+convert -size 76x76   -strip xc:#$1 AppIcon-76.png
+convert -size 152x152 -strip xc:#$1 AppIcon-76@2x.png
+convert -size 167x167 -strip xc:#$1 AppIcon-83.5@2x.png

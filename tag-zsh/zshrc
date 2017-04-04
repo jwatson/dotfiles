@@ -1,25 +1,10 @@
-# Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="jwatson"
+ZSH_THEME="jwatson2"
 
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew gem git npm tmux vi-mode virtualenvwrapper)
+plugins=(gem git git-prompt marked2 npm tmux vi-mode better-virtualenv)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
 
 # Disable flow control commands (keeps C-s from freezing everything)
 stty start undef
@@ -31,9 +16,6 @@ export EDITOR='vim'
 export CLICOLOR=1
 export LSCOLORS="exgxcxdxcxegedabagacad"
 
-# Disable the prompt munging when activating a virtualenv.
-export VIRTUAL_ENV_DISABLE_PROMPT="1"
-
 # Source additional config files.
 for config_file (~/.config/zsh/*.zsh) source $config_file
 
@@ -42,14 +24,3 @@ if [[ -e /usr/local/opt/chruby ]]; then
   source /usr/local/opt/chruby/share/chruby/chruby.sh
   source /usr/local/opt/chruby/share/chruby/auto.sh
 fi
-
-# Load pyenv if available.
-if which pyenv &>/dev/null; then
-  eval "$(pyenv init -)"
-fi
-if which pyenv-virtualenv-init > /dev/null; then
-  eval "$(pyenv virtualenv-init -)";
-fi
-
-# added by travis gem
-[ -f /Users/jwatson/.travis/travis.sh ] && source /Users/jwatson/.travis/travis.sh

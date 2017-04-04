@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -euo pipefail
+IFS=$'\n\t'
+
+palette=`mktemp -d`"/palette.png"
+
+# deletes the temp palette
+function cleanup {
+  rm "$palette"
+  echo "Deleted temp palette at: $palette"
+}
+
+trap cleanup EXIT
+
+filters="fps=5,setpts=0.8*PTS,scale=540:-1:flags=lanczos"
+
+ffmpeg -v warning -i $1 -vf "$filters,palettegen" -y $palette
+ffmpeg -v warning -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2

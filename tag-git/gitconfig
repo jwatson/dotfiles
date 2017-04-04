@@ -1,7 +1,7 @@
 [user]
   name = John Watson
-  email = john@photodojo.org
-  signingkey = BFB866C0D3F2DC38
+  email = john.watson@nuance.com
+  signingkey = D95F9AEA
 [alias]
   co = checkout
   cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -56,5 +56,6 @@
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   required = true
+  process = git-lfs filter-process
 [commit]
   gpgsign = true

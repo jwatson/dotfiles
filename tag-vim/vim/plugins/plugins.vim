@@ -13,11 +13,14 @@ Plug 'pbrisbin/vim-mkdir'
 " Rename files in place
 Plug 'pbrisbin/vim-rename-file'
 
+" The best git wrapper of all time.
+Plug 'tpope/vim-fugitive'
+
 " Easily comment code.
 Plug 'tpope/vim-commentary'
 
 " Automatically add closing statements for a number of languages.
-" Plug 'cohama/lexima.vim'
+Plug 'cohama/lexima.vim'
 
 " Allow . to make plugin actions repeat.
 Plug 'tpope/vim-repeat'
@@ -27,9 +30,6 @@ Plug 'tpope/vim-surround'
 
 " Remember last position in files.
 Plug 'dietsche/vim-lastplace'
-
-" Intelligent tab completion.
-Plug 'ervandew/supertab'
 
 " Runfile.
 Plug 'pbrisbin/vim-runfile'
