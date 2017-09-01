@@ -44,6 +44,7 @@ call minpac#add('mxw/vim-jsx')
 call minpac#add('keith/swift.vim')
 call minpac#add('tpope/vim-markdown')
 call minpac#add('ericpruitt/tmux.vim', {'rtp': 'vim/'})
+call minpac#add('fatih/vim-go')
 
 " ==========
 " Git/GitHub
