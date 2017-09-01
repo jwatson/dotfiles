@@ -1,12 +1,10 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-set -e
+IFS=$'\n\t'
+set -euo pipefail
 
-echo "\n==========================================="
-echo "Setting up Vim\n"
+printf "\n==========================================="
+printf "Setting up Vim\n"
 
 echo "Installing vim plugins"
-vim +PlugInstall +qa
-
-echo "Creating undo directory"
-mkdir -p ~/.vim/undo || echo "Undo directory exists"
+vim +PackUpdate +qa
