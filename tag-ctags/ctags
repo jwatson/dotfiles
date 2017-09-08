@@ -1,7 +1,8 @@
 -f ./.git/tags
---tag-relative
+--tag-relative=yes
 --recurse
 --exclude=.git
+--exclude=.vscode
 --exclude=build
 --exclude=vendor
 --exclude=Vendor
@@ -9,8 +10,6 @@
 --exclude=Carthage
 --exclude=node_modules
 --exclude=bower_components
---langdef=ObjectiveC
---langmap=ObjectiveC:.m.h
 --langdef=swift
 --langmap=swift:.swift
 --regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/c,class/
