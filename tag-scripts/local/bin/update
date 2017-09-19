@@ -7,5 +7,4 @@ brew update
 brew upgrade
 brew cleanup
 
-vim +PlugUpgrade +qall
-vim +PlugUpdate +qall
+vim +PackUpdate +qall
