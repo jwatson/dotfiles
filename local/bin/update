@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 set -euo pipefail
 IFS=$'\n\t'
@@ -7,4 +7,4 @@ brew update
 brew upgrade
 brew cleanup
 
-vim +PackUpdate +qall
+nvim +PackUpdate +qall
