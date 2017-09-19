@@ -59,9 +59,22 @@ alias gdt='git difftool'
 alias gs='git status | cowsay -f bong -W 120 | lolcat -p 1'
 alias lh='ls -sh'
 alias vpn="sudo openconnect --base-mtu 1400 -u john.watson --authgroup 2 --csd-wrapper ~/.cisco/csd-wrapper.sh https://bn-sslvpn.nuance.com"
+alias c='clear'
 
 # Alias hub to git.
-# eval "$(hub alias -s)"# Source additional config files.
+eval "$(hub alias -s)"
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
+# }}}
+
+# ============================================================================
+# fzf {{{
+# ============================================================================
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # }}}
 
@@ -104,6 +117,18 @@ fi
 
 # }}}
 
-# tmux-create-or-attach
+# ============================================================================
+# tmux {{{
+# ============================================================================
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
+
+# }}}
