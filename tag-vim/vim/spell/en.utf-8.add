@@ -16,3 +16,6 @@ GIS
 OAuth
 CSRF
 Postgres
+API
+WebSocket
+NCS
