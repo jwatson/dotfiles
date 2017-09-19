@@ -1,5 +1,0 @@
-Plug 'tpope/vim-bundler'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
