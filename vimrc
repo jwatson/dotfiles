@@ -121,7 +121,7 @@ set cursorline          " Highlight the current line.
 set noshowmode          " Don't show '--INSERT--' in the modeline
 
 " Display extra whitespace.
-set list listchars=tab:»·,trail:·,nbsp:·
+" set list listchars=tab:»·,trail:·,nbsp:·
 
 " Status bar.
 "set statusline+=%*

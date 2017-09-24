@@ -8,6 +8,7 @@ brew 'gifsicle'
 brew 'git', args: ['without-completions']
 brew 'hub'
 brew 'imagemagick'
+brew 'lesspipe'
 brew 'lolcat'
 brew 'neovim'
 brew 'python'
