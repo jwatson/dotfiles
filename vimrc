@@ -9,6 +9,9 @@ augroup startup
   autocmd VimEnter * if empty(argv()) | silent! edit . | endif
 augroup END
 
+let g:python_host_prog  = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " }}}
 
 " ============================================================================
@@ -32,6 +35,9 @@ call minpac#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
 call minpac#add('Shougo/neosnippet')
 call minpac#add('Shougo/neosnippet-snippets')
 call minpac#add('mitsuse/autocomplete-swift')
+call minpac#add('sebastianmarkow/deoplete-rust')
+call minpac#add('zchee/deoplete-jedi')
+call minpac#add('Rip-Rip/clang_complete')
 
 " ====================
 " Languages/Frameworks
@@ -44,6 +50,7 @@ call minpac#add('mxw/vim-jsx')
 call minpac#add('keith/swift.vim')
 call minpac#add('ericpruitt/tmux.vim', {'rtp': 'vim/'})
 call minpac#add('fatih/vim-go')
+call minpac#add('octol/vim-cpp-enhanced-highlight')
 
 " ==========
 " Git/GitHub
@@ -105,6 +112,8 @@ call minpac#add('cohama/lexima.vim')
 call minpac#add('dietsche/vim-lastplace')
 " Proper python indenting.
 call minpac#add('vim-scripts/indentpython.vim')
+" Highlight yanks.
+call minpac#add('machakann/vim-highlightedyank')
 
 " }}}
 
@@ -131,7 +140,7 @@ let g:lightline = {
 \   'active': {
 \       'right': [
 \           ['fugitive'],
-\           ['fileformat', 'fileencoding', 'filetype'],
+\           ['fileformat', 'fileencoding', 'filetype', 'lineinfo'],
 \       ]
 \   },
 \   'inactive': {
@@ -188,6 +197,15 @@ let g:runfile_by_name = {
 " }}}
 
 " ============================================================================
+" Splits {{{
+" ============================================================================
+
+set splitbelow
+set splitright
+
+" }}}
+
+" ============================================================================
 " Keybindings {{{
 " ============================================================================
 
@@ -201,10 +219,6 @@ nmap <leader>hh :tabprev<cr>
 nmap <leader>ll :tabnext<cr>
 
 nnoremap <leader>. :call ToggleCheckbox()<Cr>
-
-" zoom a vim pane, <C-w>= to re-balance
-nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
-nnoremap <leader>= :wincmd =<cr>
 
 " }}}
 
@@ -238,11 +252,12 @@ set undoreload=10000
 " Search/Replace {{{
 " ============================================================================
 
-set gdefault    " Default to global substitutions on lines.
-set ignorecase  " Case-insensitive searching.
-set smartcase   " But case-sensitive if expression contains a capital letter.
-set hlsearch    " Highlight matches.
-set showmatch   " Show all matches.
+set gdefault           " Default to global substitutions on lines.
+set ignorecase         " Case-insensitive searching.
+set smartcase          " But case-sensitive if expression contains a capital letter.
+set hlsearch           " Highlight matches.
+set showmatch          " Show all matches.
+set inccommand=nosplit " NeoVim interactive s&r
 
 " Clear highlighting when opening a file.
 autocmd BufReadCmd set nohlsearch
@@ -302,6 +317,9 @@ set completeopt=menu,menuone,longest,preview
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 
+" clang_complete
+let g:clang_library_path = '/usr/local/Cellar/llvm/5.0.0/lib'
+
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
 " neosnippets config.
@@ -334,26 +352,26 @@ nmap <silent> <leader>tg :TestVisit<CR>
 " ALE {{{
 " ============================================================================
 
-let g:ale_linters = {
-\ 'cpp': ['clang', 'clang-format'],
-\}
-
-" Update Clang options to search for OpenSSL. I'm also relaxing the version
-" to C++11 since most of my projects use that.
-let g:ale_cpp_clang_options = '-std=c++11 -Wall -I/usr/local/opt/openssl/include'
-
-let g:ale_fixers = {
-\   'c': ['clang-format'],
-\   'cpp': ['clang-format'],
-\}
-
-let g:ale_fix_on_save = 1
-let g:ale_echo_msg_format = '[%linter%]: %s'
-
 augroup AleConfig
   autocmd!
   set updatetime=1000
-  let g:ale_lint_on_text_changed = 'normal'
+
+  let g:ale_lint_on_enter = 0
+  let g:ale_lint_on_text_changed = 'never'
+  let g:ale_lint_on_save = 1
+  let g:ale_fix_on_save = 1
+  let g:ale_echo_msg_format = '[%linter%]: %s'
+
+  let g:ale_linters = {
+  \ 'cpp': ['clang', 'clang-format'],
+  \ 'rust': ['rls'],
+  \}
+
+  let g:ale_fixers = {
+  \   'c': ['clang-format'],
+  \   'cpp': ['clang-format'],
+  \}
+
   autocmd CursorHold * call ale#Lint()
   autocmd CursorHoldI * call ale#Lint()
   autocmd InsertEnter * call ale#Lint()
@@ -414,6 +432,20 @@ nnoremap <leader>u :Xtest<CR>
 " }}}
 
 " ============================================================================
+" C++ {{{
+" ============================================================================
+
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_concepts_highlight = 1
+
+autocmd FileType cpp setlocal commentstring=//\ %s
+
+" }}}
+
+" ============================================================================
 " Javascript {{{
 " ============================================================================
 
@@ -435,6 +467,10 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 " ============================================================================
 " Misc {{{
 " ============================================================================
+
+" Automatically load local .vimrc files.
+set exrc
+set secure
 
 " Automatically resize splits when the parent window size changes
 autocmd VimResized * wincmd =

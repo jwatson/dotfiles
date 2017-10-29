@@ -1,6 +1,6 @@
 [user]
-  name = John Watson
-  email = john.watson@nuance.com
+	name = John Watson
+	email = john.watson@nuance.com
   signingkey = D95F9AEA
 [alias]
   co = checkout
@@ -53,8 +53,8 @@
   tool = Kaleidoscope
 [filter "lfs"]
   clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
+	smudge = git-lfs smudge -- %f
   required = true
-  process = git-lfs filter-process
+	process = git-lfs filter-process
 [commit]
-  gpgsign = true
+	gpgsign = true
