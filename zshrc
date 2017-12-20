@@ -32,22 +32,21 @@ LSCOLORS="exgxcxdxcxegedabagacad"
 # ============================================================================
 
 alias bc='bc -lq'
-alias gpd='git config user.email "john@photodojo.org"'
-alias gdt='git difftool'
-alias gs='git status | cowsay -f bong -W 120 | lolcat -p 1'
 alias lh='ls -sh'
 alias c='clear'
 
-# Alias hub to git.
+# Git
 eval "$(hub alias -s)"
+alias gpd='git config user.email "john@photodojo.org"'
+alias gdt='git difftool'
+alias gs='git status | cowsay -f bong -W 120 | lolcat -p 1'
+alias gwip="git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"– WIP –\""
+alias gunwip='git log -n 1 | grep -q -c "– WIP –" && git reset HEAD~1'
 
 # Can't quit you, baby.
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
-
-# Werk.
-alias vpn="sudo openconnect --base-mtu 1400 -u john.watson --authgroup 2 --csd-wrapper ~/.cisco/csd-wrapper.sh https://bn-sslvpn.nuance.com"
 
 # }}}
 
@@ -56,6 +55,14 @@ alias vpn="sudo openconnect --base-mtu 1400 -u john.watson --authgroup 2 --csd-w
 # ============================================================================
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# }}}
+
+# ============================================================================
+# asdf {{{
+# ============================================================================
+
+[ -e $HOME/.asdf ] && source $HOME/.asdf/asdf.sh
 
 # }}}
 

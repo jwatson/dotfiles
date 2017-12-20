@@ -93,13 +93,4 @@ export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 export RUSTFLAGS="-C target-cpu=native"
 
-# ####
-# Ruby
-# ####
-
-if [[ -e /usr/local/opt/chruby ]]; then
-  source /usr/local/opt/chruby/share/chruby/chruby.sh
-  source /usr/local/opt/chruby/share/chruby/auto.sh
-fi
-
 # }}}
