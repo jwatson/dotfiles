@@ -2,13 +2,6 @@
 " Startup {{{
 " ============================================================================
 
-augroup startup
-  autocmd!
-
-  " If we launched vim without specifying a target, we want to open the pwd
-  autocmd VimEnter * if empty(argv()) | silent! edit . | endif
-augroup END
-
 let g:python_host_prog  = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
@@ -31,13 +24,8 @@ call minpac#add('k-takata/minpac', {'type':'opt'})
 " Completion
 " ==========
 
-call minpac#add('Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' })
-call minpac#add('Shougo/neosnippet')
-call minpac#add('Shougo/neosnippet-snippets')
+call minpac#add('valloric/youcompleteme')
 call minpac#add('mitsuse/autocomplete-swift')
-call minpac#add('sebastianmarkow/deoplete-rust')
-call minpac#add('zchee/deoplete-jedi')
-call minpac#add('Rip-Rip/clang_complete')
 
 " ====================
 " Languages/Frameworks
@@ -72,6 +60,7 @@ call minpac#add('christoomey/vim-tmux-runner')
 " ==========
 
 call minpac#add('lifepillar/vim-solarized8')
+call minpac#add('morhetz/gruvbox')
 call minpac#add('itchyny/lightline.vim')
 
 " ====
@@ -121,7 +110,19 @@ call minpac#add('machakann/vim-highlightedyank')
 " Appearance {{{
 " ============================================================================
 
-colorscheme solarized8_dark
+" 24-bit color.
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+set termguicolors
+
+" Gruvbox dark.
+set background=dark
+let g:gruvbox_italic=1
+colorscheme gruvbox
+
+" Solarized dark.
+" let g:solarized_term_italics=1
+" colorscheme solarized8
 
 set colorcolumn=80      " Highlight the 80 character column.
 set relativenumber      " Use relative line numbers.
@@ -136,7 +137,7 @@ set noshowmode          " Don't show '--INSERT--' in the modeline
 "set statusline+=%*
 
 let g:lightline = {
-\   'colorscheme': 'solarized',
+\   'colorscheme': 'gruvbox',
 \   'active': {
 \       'right': [
 \           ['fugitive'],
@@ -232,7 +233,6 @@ augroup spellcheck
 
     " recreate the spelling dictionary at startup
     autocmd VimEnter * execute "silent mkspell! " . &spellfile
-  augroup END
 augroup END
 
 " }}}
@@ -314,11 +314,10 @@ set wildmode=list:longest,list:full
 set completeopt=menu,menuone,longest,preview
 
 " Enable deoplete automatically.
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#file#enable_buffer_path = 1
 
-" clang_complete
-let g:clang_library_path = '/usr/local/Cellar/llvm/5.0.0/lib'
+let g:ycm_collect_identifiers_from_tags_files = 1
 
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
@@ -372,6 +371,8 @@ augroup AleConfig
   \   'cpp': ['clang-format'],
   \}
 
+  " autocmd BufEnter *.cpp,*.h,*.hpp, let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
+
   autocmd CursorHold * call ale#Lint()
   autocmd CursorHoldI * call ale#Lint()
   autocmd InsertEnter * call ale#Lint()
@@ -414,7 +415,7 @@ set stl+=%{ConflictedVersion()}
 command! Ctags call s:generate_ctags()
 
 function! s:generate_ctags()
-  call system("git ls-files | ctags -L -")
+  call system("git ls-files | ctags --fields=+l -L -")
 endfunction
 
 " }}}
@@ -438,10 +439,18 @@ nnoremap <leader>u :Xtest<CR>
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
-let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_experimental_template_highlight = 1
 let g:cpp_concepts_highlight = 1
 
 autocmd FileType cpp setlocal commentstring=//\ %s
+
+" }}}
+
+" ============================================================================
+" C# {{{
+" ============================================================================
+
+autocmd FileType cs setlocal commentstring=//\ %s
 
 " }}}
 
