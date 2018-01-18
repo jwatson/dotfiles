@@ -318,6 +318,7 @@ set completeopt=menu,menuone,longest,preview
 " let g:deoplete#file#enable_buffer_path = 1
 
 let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_confirm_extra_conf = 0
 
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
@@ -369,6 +370,7 @@ augroup AleConfig
   let g:ale_fixers = {
   \   'c': ['clang-format'],
   \   'cpp': ['clang-format'],
+  \   'rust': ['rustfmt'],
   \}
 
   " autocmd BufEnter *.cpp,*.h,*.hpp, let g:ale_cpp_clang_options = join(ncm_clang#compilation_info()['args'], ' ')
