@@ -1,0 +1,56 @@
+#!/bin/bash
+#
+# Based on https://gist.github.com/danielrehn/d2e6f2129e5f853c3166
+#
+# Font is Colossal from http://patorjk.com/software/taag/
+
+# Cosmic color sequence
+
+ESC_SEQ="\\x1b[38;5;"
+COL_01=$ESC_SEQ"160;01m"
+COL_02=$ESC_SEQ"196;01m"
+COL_03=$ESC_SEQ"202;01m"
+COL_04=$ESC_SEQ"208;01m"
+COL_05=$ESC_SEQ"214;01m"
+COL_06=$ESC_SEQ"220;01m"
+COL_07=$ESC_SEQ"226;01m"
+COL_08=$ESC_SEQ"190;01m"
+COL_09=$ESC_SEQ"154;01m"
+COL_10=$ESC_SEQ"118;01m"
+COL_11=$ESC_SEQ"046;01m"
+COL_12=$ESC_SEQ"047;01m"
+COL_13=$ESC_SEQ"048;01m"
+COL_14=$ESC_SEQ"049;01m"
+COL_15=$ESC_SEQ"051;01m"
+COL_16=$ESC_SEQ"039;01m"
+COL_17=$ESC_SEQ"027;01m"
+COL_18=$ESC_SEQ"021;01m"
+COL_19=$ESC_SEQ"021;01m"
+COL_20=$ESC_SEQ"057;01m"
+COL_21=$ESC_SEQ"093;01m"
+RESET="\\033[m"
+
+# Timeless message
+
+echo -e "$COL_01   888888          888"
+echo -e "$COL_02     \"88b          888"
+echo -e "$COL_03      888          888"
+echo -e "$COL_04      888  .d88b.  88888b.  88888b."
+echo -e "$COL_05      888 d88\"\"88b 888 \"88b 888 \"88b"
+echo -e "$COL_06      888 888  888 888  888 888  888"
+echo -e "$COL_07      88P Y88..88P 888  888 888  888"
+echo -e "$COL_08      888  \"Y88P\"  888  888 888  888"
+echo -e "$COL_09    .d88P             d8b"
+echo -e "$COL_10  .d88P\"              Y8P"
+echo -e "$COL_11 888P\""
+echo -e "$COL_12                      888 .d8888b"
+echo -e "$COL_13                      888 88K"
+echo -e "$COL_14        d8888         888 \"Y8888b."
+echo -e "$COL_15       d88888         888      X88"
+echo -e "$COL_16      d88P888         888  88888P'"
+echo -e "$COL_17     d88P 888 888  888  888  .d88b.  .d8888b   .d88b.  88888b.d88b.   .d88b."
+echo -e "$COL_18    d88P  888 888  888  888 d8P  Y8b 88K      d88\"\"88b 888 \"888 \"88b d8P  Y8b"
+echo -e "$COL_19   d88P   888 888  888  888 88888888 \"Y8888b. 888  888 888  888  888 88888888"
+echo -e "$COL_20  d8888888888 Y88b 888 d88P Y8b.          X88 Y88..88P 888  888  888 Y8b."
+echo -e "$COL_21 d88P     888  \"Y8888888P\"   \"Y8888   88888P'  \"Y88P\"  888  888  888  \"Y8888"
+echo -ne "$RESET"

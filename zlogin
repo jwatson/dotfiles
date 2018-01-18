@@ -13,3 +13,7 @@
     zcompile "$zcompdump"
   fi
 } &!
+
+# Display my daily affirmation.
+DAILY="$HOME/.local/bin/daily-affirmation"
+[ -x $DAILY ] && $DAILY
