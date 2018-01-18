@@ -38,7 +38,7 @@ typeset -gU cdpath fpath mailpath path
 path=(
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
-    $(go env GOPATH)/bin
+    "$HOME/go/bin"
     "$HOME/.fastlane/bin"
     "/usr/local/bin"
     "/usr/bin"
