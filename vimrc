@@ -31,14 +31,9 @@ call minpac#add('mitsuse/autocomplete-swift')
 " Languages/Frameworks
 " ====================
 
-call minpac#add('rust-lang/rust.vim')
-call minpac#add('cespare/vim-toml')
-call minpac#add('pangloss/vim-javascript')
-call minpac#add('mxw/vim-jsx')
-call minpac#add('keith/swift.vim')
+call minpac#add('sheerun/vim-polyglot')
+call minpac#add('editorconfig/editorconfig-vim')
 call minpac#add('ericpruitt/tmux.vim', {'rtp': 'vim/'})
-call minpac#add('fatih/vim-go')
-call minpac#add('octol/vim-cpp-enhanced-highlight')
 
 " ==========
 " Git/GitHub
