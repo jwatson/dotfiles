@@ -2,8 +2,8 @@
 " Startup {{{
 " ============================================================================
 
-let g:python_host_prog  = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_prog  = '/usr/local/opt/python@2/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python'
 
 " }}}
 
@@ -493,3 +493,6 @@ set shiftround                  " Round tabs to a multiple of shiftwidth.
 set expandtab                   " Use spaces instead of tabs.
 set wrap                        " Turn on line wrapping.
 set nojoinspaces                " Don't add two spaces after punctuation when joining lines.
+
+" Unreal Engine plugins are JSON.
+autocmd BufNewFile,BufReadPost *.uplugin set filetype=json
