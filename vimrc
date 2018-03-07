@@ -385,6 +385,9 @@ nnoremap [r :ALEPreviousWrap<CR>
 " Tmux {{{
 " ============================================================================
 
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
 let g:VtrGitCdUpOnOpen = 1
 
 nnoremap <leader>kr :VtrKillRunner<cr>
@@ -392,7 +395,7 @@ nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
 nnoremap <leader>rr :VtrSendCommandToRunner! !!<cr>
 
-nnoremap <leader>r :VtrSendCommandToRunner!
+nnoremap <leader>r :VtrSendCommandToRunner!<space>
 
 " }}}
 
