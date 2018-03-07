@@ -42,6 +42,7 @@ alias gdt='git difftool'
 alias gs='git status | cowsay -f bong -W 120 | lolcat -p 1'
 alias gwip="git add -A; git ls-files --deleted -z | xargs -0 git rm; git commit -m \"– WIP –\""
 alias gunwip='git log -n 1 | grep -q -c "– WIP –" && git reset HEAD~1'
+alias gign='git ls-files --others --ignored --exclude-standard'
 
 # Can't quit you, baby.
 if type nvim > /dev/null 2>&1; then
