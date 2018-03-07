@@ -37,10 +37,10 @@ typeset -gU cdpath fpath mailpath path
 
 path=(
     "$HOME/.local/bin"
+    "/usr/local/bin"
     "$HOME/.cargo/bin"
     "$HOME/go/bin"
     "$HOME/.fastlane/bin"
-    "/usr/local/bin"
     "/usr/bin"
     "/bin"
     "/usr/local/sbin"
