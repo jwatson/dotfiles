@@ -98,6 +98,8 @@ call minpac#add('dietsche/vim-lastplace')
 call minpac#add('vim-scripts/indentpython.vim')
 " Highlight yanks.
 call minpac#add('machakann/vim-highlightedyank')
+" Visualize registers when trying to paste info from them.
+call minpac#add('junegunn/vim-peekaboo')
 
 " }}}
 
