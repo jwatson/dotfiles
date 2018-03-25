@@ -360,7 +360,7 @@ augroup AleConfig
   let g:ale_echo_msg_format = '[%linter%]: %s'
 
   let g:ale_linters = {
-  \ 'cpp': ['clang', 'clang-format'],
+  \ 'cpp': ['clangcheck', 'clangtidy'],
   \ 'rust': ['rls'],
   \}
 
