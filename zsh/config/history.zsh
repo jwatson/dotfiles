@@ -29,8 +29,5 @@ setopt HIST_IGNORE_SPACE
 ## Do not write a duplicate event to the history file.
 setopt HIST_SAVE_NO_DUPS
 
-## Do not execute immediately upon history expansion.
-setopt HIST_VERIFY
-
 ## Lists the ten most used commands.
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
