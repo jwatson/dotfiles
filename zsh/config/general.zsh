@@ -33,12 +33,11 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
 export RUSTFLAGS="-C target-cpu=native"
-export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
 ###
 ### Aliases I can't find a better place for.
 ###
 
-alias c='clear'
 alias ll='ls -l'
 alias pcat='pygmentize -f terminal16m -O style=native -g'
