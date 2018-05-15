@@ -30,6 +30,10 @@ set nojoinspaces                " Don't add two spaces after punctuation when jo
 " More natural split layout.
 set splitbelow
 set splitright
+
+" Always draw the sign column. This prevents the buffer from moving when
+" adding/deleting signs (e.g. gitgutter, RLS).
+set signcolumn=yes
 " }}}
 
 " ==============================================================================
@@ -44,30 +48,25 @@ if !has('nvim')
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 
+" Language server support (http://langserver.org/).
+Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
+
 " lang#c
-Plug 'tweekmonster/deoplete-clang2'
 Plug 'arakashic/chromatica.nvim', {'merged': 0}
 
-" lang#csharp
-Plug 'OmniSharp/omnisharp-vim',     {'for': 'cs'}
-Plug 'autozimu/deoplete-omnisharp', {'for': 'cs'}
-
 " lang#python
-Plug 'zchee/deoplete-jedi',           {'for': 'python'}
 Plug 'heavenshell/vim-pydocstring',   {'for': 'python'}
 Plug 'vimjas/vim-python-pep8-indent', {'for': 'python'}
-Plug 'tell-k/vim-autoflake',          {'for': 'python', 'merged' : 0}
 
 " lang#go
 Plug 'fatih/vim-go',      {'for': 'go', 'loadconf_before' : 1}
-Plug 'zchee/deoplete-go', {'for': 'go', 'do': 'make'}
 
 " lang#ruby
 Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 
 " lang#rust
-Plug 'racer-rust/vim-racer', {'for': 'rust'}
 Plug 'rust-lang/rust.vim',   {'for': 'rust', 'merged' : 1}
+Plug 'cespare/vim-toml'
 
 " lang#tmux
 Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
@@ -97,9 +96,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Sensible default settings
 Plug 'tpope/vim-sensible'
-
-" Asynchronous file linting/formatting
-Plug 'w0rp/ale'
 
 " Language agnostic testing support
 Plug 'janko-m/vim-test'
@@ -281,8 +277,30 @@ set completeopt=menu,menuone,longest,preview
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 
+" Close the scratch window.
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 " CTRL-P tab-completion
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+
+" Language server support.
+let g:LanguageClient_autoStart = 1
+
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['cquery'],
+    \ 'cpp': ['cquery'],
+    \ 'go': ['go-langserver'],
+    \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ }
+
+nnoremap <silent> H  :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> rn :call LanguageClient#textDocument_rename()<CR>
+nnoremap <silent> fm :call LanguageClient#textDocument_formatting()<CR>
+
+" Rust
+let g:rustfmt_autosave = 1
 " }}}
 
 " ==============================================================================
@@ -299,40 +317,6 @@ nmap <silent> <leader>tg :TestVisit<CR>
 " }}}
 
 " ==============================================================================
-" ALE: {{{
-" ==============================================================================
-augroup AleConfig
-  autocmd!
-  set updatetime=1000
-
-  let g:ale_lint_on_enter = 0
-  let g:ale_lint_on_text_changed = 'never'
-  let g:ale_lint_on_save = 1
-  let g:ale_fix_on_save = 1
-  let g:ale_echo_msg_format = '[%linter%]: %s'
-
-  let g:ale_linters = {
-  \ 'cpp': ['clangcheck', 'clangtidy'],
-  \ 'rust': ['rls'],
-  \}
-
-  let g:ale_fixers = {
-  \   'c': ['clang-format'],
-  \   'cpp': ['clang-format'],
-  \   'rust': ['rustfmt'],
-  \}
-
-  autocmd CursorHold * call ale#Lint()
-  autocmd CursorHoldI * call ale#Lint()
-  autocmd InsertEnter * call ale#Lint()
-  autocmd InsertLeave * call ale#Lint()
-augroup END
-
-nnoremap ]r :ALENextWrap<CR>
-nnoremap [r :ALEPreviousWrap<CR>
-" }}}
-
-" ==============================================================================
 " Tmux: {{{
 " ==============================================================================
 let g:VtrStripLeadingWhitespace = 0
@@ -340,12 +324,12 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 let g:VtrGitCdUpOnOpen = 1
 
-nnoremap <leader>kr :VtrKillRunner<cr>
+nnoremap <leader>r :VtrSendCommandToRunner!<space>
+
 nnoremap <leader>ar :VtrAttachToPane<cr>
 nnoremap <leader>fr :VtrFocusRunner<cr>
+nnoremap <leader>kr :VtrKillRunner<cr>
 nnoremap <leader>rr :VtrSendCommandToRunner! !!<cr>
-
-nnoremap <leader>r :VtrSendCommandToRunner!<space>
 " }}}
 
 " ==============================================================================
@@ -357,6 +341,9 @@ function! s:generate_ctags()
   call system("git ls-files | ctags --fields=+l -L -")
 endfunction
 " }}}
+
+" Python
+nmap <silent> <C-_> <Plug>(pydocstring)
 
 " ==============================================================================
 " Xcode: {{{
