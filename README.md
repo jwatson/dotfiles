@@ -1,7 +1,6 @@
 # John Watson's Dotfiles
 
-These are the config files I use. I've tried to make things work equally
-well on OS X and Linux.
+These are the config files I use.
 
 ## Installation
 
@@ -11,22 +10,13 @@ You'll want to clone the repo into `~/.dotfiles`:
 $ git clone https://github.com/jwatson/dotfiles .dotfiles
 ```
 
-Next, run `setup/setup` to install everything, with dependencies.
+Normally, you'd run `setup/setup` to install everything, with dependencies. That
+definitely doesn't work any more.
 
 ## rcm
 
-This repo uses [rcm](https://github.com/thoughtbot/rcm) for file management,
-which I highly recommend. It also makes use of rcm's tag feature, which allows
-you to pull down select parts of the repo if you wish.
-
-If you'd rather just create the directory structure and symlinks instead of
-installing Homebrew dependencies too, you can run the following:
+This repo uses [rcm](https://github.com/thoughtbot/rcm) for file management.
 
 ```sh
 $ rcup -v -d ~/.dotfiles
 ```
-
-## Acknowledgements
-
-Blatantly stolen from Gordon Fontenote's
-[dotfiles](https://github.com/gfontenot/dotfiles), and then customized a bit.
