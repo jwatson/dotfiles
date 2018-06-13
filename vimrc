@@ -134,7 +134,7 @@ call plug#begin('~/.vim/plugged')
 
 " Appearance
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 
 " Fuzzy file finder.
 Plug '/usr/local/opt/fzf'
@@ -216,27 +216,12 @@ set noshowmode
 " Always show the status line.
 set laststatus=2
 
-" Configure LightLine.
-let g:lightline = {
-\   'colorscheme': 'gruvbox',
-\   'active': {
-\       'right': [
-\           ['fugitive'],
-\           ['fileformat', 'fileencoding', 'filetype', 'lineinfo'],
-\       ]
-\   },
-\   'inactive': {
-\       'right': []
-\   },
-\   'component_function': {
-\       'fugitive': 'LightLineFugitive'
-\   }
-\}
+" Use a patched version of Source Code Pro with additional glyphs.
+" brew cask install homebrew/cask-fonts/font-source-code-pro-for-powerline
+let g:airline_powerline_fonts = 1
 
-" Use vim-fugitive to return our current Git branch.
-function! LightLineFugitive()
-    return exists('*fugitive#head') ? fugitive#head() : ''
-endfunction
+" Don't show collapsed sections.
+let g:airline_skip_empty_sections = 1
 
 " }}}
 
