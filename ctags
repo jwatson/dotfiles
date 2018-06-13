@@ -11,7 +11,7 @@
 --exclude=node_modules
 --exclude=bower_components
 
---langdef=swift
+--langdef=Swift
 --langmap=swift:.swift
 --regex-swift=/[[:<:]]class[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/c,class/
 --regex-swift=/[[:<:]]enum[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/e,enum/
@@ -20,21 +20,3 @@
 --regex-swift=/[[:<:]]struct[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/s,struct/
 --regex-swift=/[[:<:]]extension[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/E,extension/
 --regex-swift=/[[:<:]]typealias[[:>:]][[:space:]]+([[:alnum:]_]+)/\1/t,typealias/
-
---languages=-javascript
---langdef=js
---langmap=js:.js
---langmap=js:+.jsx
---regex-js=/[ \t.]([A-Z][A-Z0-9._$]+)[ \t]*[=:][ \t]*([0-9"'\[\{]|null)/\1/n,constant/
-
---langdef=Rust
---langmap=Rust:.rs
---regex-Rust=/^[ \t]*(#\[[^\]]\][ \t]*)*(pub[ \t]+)?(extern[ \t]+)?("[^"]+"[ \t]+)?(unsafe[ \t]+)?fn[ \t]+([a-zA-Z0-9_]+)/\6/f,functions,function definitions/
---regex-Rust=/^[ \t]*(pub[ \t]+)?type[ \t]+([a-zA-Z0-9_]+)/\2/T,types,type definitions/
---regex-Rust=/^[ \t]*(pub[ \t]+)?enum[ \t]+([a-zA-Z0-9_]+)/\2/g,enum,enumeration names/
---regex-Rust=/^[ \t]*(pub[ \t]+)?struct[ \t]+([a-zA-Z0-9_]+)/\2/s,structure names/
---regex-Rust=/^[ \t]*(pub[ \t]+)?mod[ \t]+([a-zA-Z0-9_]+)/\2/m,modules,module names/
---regex-Rust=/^[ \t]*(pub[ \t]+)?(static|const)[ \t]+(mut[ \t]+)?([a-zA-Z0-9_]+)/\4/c,consts,static constants/
---regex-Rust=/^[ \t]*(pub[ \t]+)?(unsafe[ \t]+)?trait[ \t]+([a-zA-Z0-9_]+)/\3/t,traits,traits/
---regex-Rust=/^[ \t]*(pub[ \t]+)?(unsafe[ \t]+)?impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)/\5 \7 \8/i,impls,trait implementations/
---regex-Rust=/^[ \t]*macro_rules![ \t]+([a-zA-Z0-9_]+)/\1/d,macros,macro definitions/
