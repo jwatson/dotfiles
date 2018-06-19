@@ -137,8 +137,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 
 " Fuzzy file finder.
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -262,36 +261,16 @@ nnoremap K :Rg <C-R><C-W><CR>
 " }}}
 
 " =============================================================================
-" FZF {{{
+" CtrlP {{{
 " =============================================================================
 
-" As an ex-`ctrlp.vim` user, bind CTRL-P to opening buffers with fzf.
-nnoremap <C-p> :Files<CR>
+" Ignore git directories.
+set wildignore+=*/.git/*
 
-" The preview window should take up the bottom 20% of the screen.
-let g:fzf_layout = { 'down': '~20%' }
-
-" Customize fzf colors to match the color scheme.
-let g:fzf_colors = {
-\   'fg':      ['fg', 'Normal'],
-\   'bg':      ['bg', 'Normal'],
-\   'hl':      ['fg', 'Comment'],
-\   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-\   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-\   'hl+':     ['fg', 'Statement'],
-\   'info':    ['fg', 'PreProc'],
-\   'border':  ['fg', 'Ignore'],
-\   'prompt':  ['fg', 'Conditional'],
-\   'pointer': ['fg', 'Exception'],
-\   'marker':  ['fg', 'Keyword'],
-\   'spinner': ['fg', 'Label'],
-\   'header':  ['fg', 'Comment']
-\}
-
-" Command to generate tags file.
-let g:fzf_tags_command = 'ctags --fields=+l -R'
-
-" }}}
+if executable('rg')
+    let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+    let g:ctrlp_use_caching = 0
+endif
 
 " =============================================================================
 " Completion & Languages {{{
