@@ -11,4 +11,8 @@ for zsh_source in $HOME/.zsh/config/*.zsh; do
     source $zsh_source
 done
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 ensure_tmux_is_running
+
