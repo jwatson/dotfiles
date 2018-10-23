@@ -32,6 +32,9 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 ## Set the Less input preprocessor.
 export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
+# Use neovim as a man pager.
+export MANPAGER="nvim -c 'set ft=man' -"
+
 export RUSTFLAGS="-C target-cpu=native"
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
@@ -39,5 +42,9 @@ export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/ru
 ### Aliases I can't find a better place for.
 ###
 
+alias ls='exa'
+alias cat='bat --style plain'
+alias dirs='dirs -v'
+alias grep='rg'
 alias ll='ls -l'
 alias pcat='pygmentize -f terminal16m -O style=native -g'
