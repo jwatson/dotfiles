@@ -1,6 +1,6 @@
 #compdef poetry
 
-_poetry_fa45def9acb369a9_complete()
+_poetry_29e41b88a36d810a_complete()
 {
     local state com cur
 
@@ -19,7 +19,7 @@ _poetry_fa45def9acb369a9_complete()
         opts=("--ansi:Force ANSI output" "--help:Display this help message" "--no-ansi:Disable ANSI output" "--no-interaction:Do not ask any interactive question" "--quiet:Do not output any message" "--verbose:Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug" "--version:Display this application version")
     elif [[ $cur == $com ]]; then
         state="command"
-        coms=("about:Short information about Poetry." "add:Add a new dependency to pyproject.toml." "build:Builds a package, as a tarball and a wheel by default." "check:Checks the validity of the pyproject.toml file." "config:Sets/Gets config options." "debug\:info:Shows debug information." "debug\:resolve:Debugs dependency resolution." "help:Displays help for a command" "install:Installs the project dependencies." "list:Lists commands" "lock:Locks the project dependencies." "new:Creates a new Python project at <path\>" "publish:Publishes a package to a remote repository." "remove:Removes a package from the project dependencies." "run:Runs a command in the appropriate environment." "script:Executes a script defined in pyproject.toml" "search:Searches for packages on remote repositories." "self\:update:Updates poetry to the latest version." "show:Shows information about packages." "update:Update dependencies as according to the pyproject.toml file." "version:Bumps the version of the project.")
+        coms=("about:Short information about Poetry." "add:Add a new dependency to pyproject.toml." "build:Builds a package, as a tarball and a wheel by default." "cache\:clear:Clears poetry\'s cache." "check:Checks the validity of the pyproject.toml file." "config:Sets/Gets config options." "debug\:info:Shows debug information." "debug\:resolve:Debugs dependency resolution." "develop:Installs the current project in development mode." "help:Displays help for a command" "init:Creates a basic pyproject.toml file in the current directory." "install:Installs the project dependencies." "list:Lists commands" "lock:Locks the project dependencies." "new:Creates a new Python project at <path\>" "publish:Publishes a package to a remote repository." "remove:Removes a package from the project dependencies." "run:Runs a command in the appropriate environment." "script:Executes a script defined in pyproject.toml. \(Deprecated\)" "search:Searches for packages on remote repositories." "self\:update:Updates poetry to the latest version." "shell:Spawns a shell within the virtual environment." "show:Shows information about packages." "update:Update dependencies as according to the pyproject.toml file." "version:Bumps the version of the project.")
     fi
 
     case $state in
@@ -34,11 +34,15 @@ _poetry_fa45def9acb369a9_complete()
             ;;
 
             (add)
-            opts+=("--allow-prereleases:Accept prereleases." "--dev:Add package as development dependency." "--dry-run:Outputs the operations but will not execute anything \(implicitly enables --verbose\)." "--optional:Add as an optional dependency.")
+            opts+=("--allow-prereleases:Accept prereleases." "--dev:Add package as development dependency." "--dry-run:Outputs the operations but will not execute anything \(implicitly enables --verbose\)." "--extras:Extras to activate for the dependency." "--git:The url of the Git repository." "--optional:Add as an optional dependency." "--path:The path to a dependency." "--platform:Platforms for which the dependencies must be installed." "--python:Python version\( for which the dependencies must be installed.")
             ;;
 
             (build)
             opts+=("--format:Limit the format to either wheel or sdist.")
+            ;;
+
+            (cache:clear)
+            opts+=("--all:Clear all caches.")
             ;;
 
             (check)
@@ -54,6 +58,10 @@ _poetry_fa45def9acb369a9_complete()
             ;;
 
             (debug:resolve)
+            opts+=("--extras:Extras to activate for the dependency." "--python:Python version\(s\) to use for resolution.")
+            ;;
+
+            (develop)
             opts+=()
             ;;
 
@@ -61,8 +69,12 @@ _poetry_fa45def9acb369a9_complete()
             opts+=("--format:The output format \(txt, json, or md\)" "--raw:To output raw command help")
             ;;
 
+            (init)
+            opts+=("--author:Author name of the package" "--dependency:Package to require with an optional version constraint, e.g. requests:\^2.10.0 or requests=2.11.1" "--description:Description of the package" "--dev-dependency:Package to require for development with an optional version constraint, e.g. requests:\^2.10.0 or requests=2.11.1" "--license:License of the package" "--name:Name of the package")
+            ;;
+
             (install)
-            opts+=("--dry-run:Outputs the operations but will not execute anything \(implicitly enables --verbose\)." "--extras:Extra sets of dependencies to install \(multiple values allowed\)." "--no-dev:Do not install dev dependencies.")
+            opts+=("--develop:Install given packages in development mode." "--dry-run:Outputs the operations but will not execute anything \(implicitly enables --verbose\)." "--extras:Extra sets of dependencies to install." "--no-dev:Do not install dev dependencies.")
             ;;
 
             (list)
@@ -74,11 +86,11 @@ _poetry_fa45def9acb369a9_complete()
             ;;
 
             (new)
-            opts+=("--name:Set the resulting package name.")
+            opts+=("--name:Set the resulting package name." "--src:Use the src layout for the project.")
             ;;
 
             (publish)
-            opts+=("--no-build:Do not build the package before publishing." "--repository:The repository to publish the package to.")
+            opts+=("--build:Build the package before publishing." "--password:The password to access the repository." "--repository:The repository to publish the package to." "--username:The username to access the repository.")
             ;;
 
             (remove)
@@ -101,8 +113,12 @@ _poetry_fa45def9acb369a9_complete()
             opts+=("--preview:Install prereleases.")
             ;;
 
+            (shell)
+            opts+=()
+            ;;
+
             (show)
-            opts+=("--latest:Show the latest version." "--outdated:Show the latest version but only for packages that are outdated." "--tree:List the dependencies as a tree.")
+            opts+=("--all:Show all packages \(even those not compatible with current system\)." "--latest:Show the latest version." "--outdated:Show the latest version but only for packages that are outdated." "--tree:List the dependencies as a tree.")
             ;;
 
             (update)
@@ -123,5 +139,5 @@ _poetry_fa45def9acb369a9_complete()
     esac
 }
 
-_poetry_fa45def9acb369a9_complete "$@"
-compdef _poetry_fa45def9acb369a9_complete /Users/jwatson/.local/venvs/poetry/bin/poetry
+_poetry_29e41b88a36d810a_complete "$@"
+compdef _poetry_29e41b88a36d810a_complete /Users/jwatson/Library/Python/3.7/bin/poetry

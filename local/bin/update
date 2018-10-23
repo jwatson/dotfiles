@@ -17,7 +17,9 @@ pip3 install \
      --user \
      black \
      neovim \
-     poetry \
-     'python-language-server[pyflakes,pycodestyle,pydocstyle,yapf]' \
+     'python-language-server[pyflakes,pycodestyle,pydocstyle]' \
      pyls-mypy \
-     pyls-isort
+     pyls-isort \
+     pyls-black
+
+poetry self:update
