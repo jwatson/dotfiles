@@ -24,7 +24,7 @@ set ttimeout
 set ttimeoutlen=50
 
 " Show a few lines of context around the cursor.
-set scrolloff=5
+set scrolloff=1
 
 " Do incremental searching when it's possible to timeout.
 if has('reltime')
@@ -36,18 +36,6 @@ syntax on
 
 " Enable file type detection and do language-dependent indenting.
 filetype plugin indent on
-
-augroup vimStartup
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid, when inside an event handler
-    " (happens when dropping a file on gvim) and for a commit message (it's
-    " likely a different one than last time).
-    autocmd BufReadPost *
-        \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-        \ |   exe "normal! g`\""
-        \ | endif
-
-augroup END
 
 " }}}
 
@@ -132,6 +120,13 @@ autocmd VimResized * wincmd =
 
 call plug#begin('~/.vim/plugged')
 
+" Completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+if !has('nvim')
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 " Appearance
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
@@ -141,34 +136,40 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'tmux-plugins/vim-tmux'
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-" Completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-if !has('nvim')
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
+" Asynchronous file linting/formatting.
 Plug 'w0rp/ale'
 
-"Plug 'Valloric/YouCompleteMe', {
-"\   'do': './install.py --clang-completer --rust-completer'
-"\}
-
-" Language server support.
-" Plug 'natebosch/vim-lsc'
-
-" Python
-Plug 'ambv/black'
-
-" Rust
+" Languages/frameworks.
+Plug 'keith/swift.vim'
+Plug 'mitsuse/autocomplete-swift'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
+Plug 'leafgarland/typescript-vim'
+
+"if has('nvim')
+    " Clang-based syntax highlighting for C-family languages.
+"    Plug 'arakashic/chromatica.nvim'
+"endif
+
+" Easily comment code.
+Plug 'tpope/vim-commentary'
+
+" Highlight yanked lines.
+Plug 'machakann/vim-highlightedyank'
+
+" Intelligently reopen files at your last position.
+Plug 'farmergreg/vim-lastplace'
+
+" Automatically add closing statements for a number of languages
+Plug 'cohama/lexima.vim'
+
+" Surround text with quotes, etc.
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
@@ -220,7 +221,7 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 " Don't show collapsed sections.
-let g:airline_skip_empty_sections = 1
+" let g:airline_skip_empty_sections = 1
 
 " }}}
 
@@ -282,28 +283,55 @@ let g:ycm_python_binary_path = 'python3'
 
 let g:ale_completion_enabled = 1
 
+let g:ale_fix_on_save = 1
+
 let g:ale_open_list = 0
 
 let g:ale_linters_explicit = 1
 
 let g:ale_linters = {
+\   'cpp': ['cquery'],
+\   'typescript': ['tsserver'],
 \   'python': ['pyls'],
 \   'rust': ['rls'],
+\   'sh': ['shellcheck'],
 \}
 
-" LSP servers (http://langserver.org/).
-let g:lsc_server_commands = {
-\   'c':      'cquery',
-\   'cpp':    'cquery',
-\   'go':     'go-langserver',
-\   'python': 'pyls',
-\	'rust':   'rls',
-\ }
+let g:ale_fixers = {
+\   'cpp': ['clang-format'],
+\   'python': ['black'],
+\   'rust': ['rustfmt'],
+\}
 
 " Format Rust files on save.
 let g:rustfmt_autosave = 1
 
+let g:chromatica#libclang_path='/usr/local/opt/llvm/lib'
+
+let g:chromatica#enable_at_startup=1
+
+" Markdown in comments will be formatted.
+let g:markdown_fenced_languages = [
+\   'rust'
+\ , 'python'
+\ , 'swift'
+\ , 'ruby'
+\ , 'sh'
+\ , 'yaml'
+\ , 'objc'
+\ , 'haskell'
+\ ]
+
 " Use <tab> to complete suggestions.
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+
+" CocoaPods files are Ruby.
+autocmd BufNewFile,BufRead Podfile,*.podspec setfiletype ruby
+
+" Insert markdown-formatted top-level header with today's date.
+nnoremap <leader>d "=strftime("# %A, %B %e, %Y")<CR>P
+
+" Redraw the screen when things get pooched.
+nnoremap <leader>rd :redraw!<CR>
 
 " }}}
