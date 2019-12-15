@@ -1,3 +1,12 @@
+# To profile zsh:
+# ---------------
+# - load the zprof module
+# - start a new shell
+# - run `zprof | less`
+
+## Uncomment to enable profiling.
+# zmodload zsh/zprof
+
 source /usr/local/opt/zplug/init.zsh
 
 zplug 'mafredri/zsh-async', from:github
@@ -11,8 +20,14 @@ for zsh_source in $HOME/.zsh/config/*.zsh; do
     source $zsh_source
 done
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+## Set up virtualenvwrapper
+export PIP_USER_DIR="$HOME/Library/Python/3.7"
+export WORKON_HOME="$HOME/.virtualenvs"
+[ -s "$PIP_USER_DIR/bin/virtualenvwrapper.sh" ] && \. "$PIP_USER_DIR/bin/virtualenvwrapper.sh"
+
+## NVM is a dog, only load it if you're using/developing Node software.
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 ensure_tmux_is_running
 
