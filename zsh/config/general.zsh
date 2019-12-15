@@ -38,13 +38,13 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export RUSTFLAGS="-C target-cpu=native"
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"
 
-###
-### Aliases I can't find a better place for.
-###
+# --files: List files that would be searched but do not search
+# --no-ignore: Do not respect .gitignore, etc...
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
-alias ls='exa'
-alias cat='bat --style plain'
-alias dirs='dirs -v'
-alias grep='rg'
-alias ll='ls -l'
-alias pcat='pygmentize -f terminal16m -O style=native -g'
+. $HOME/.asdf/asdf.sh
+
+. $HOME/.asdf/completions/asdf.bash
