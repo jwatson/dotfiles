@@ -1,0 +1,12 @@
+[submodule "vim/pack/plugins/start/vim-airline"]
+	path = vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/pack/plugins/start/gruvbox"]
+	path = vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/pack/plugins/start/vim-swift"]
+	path = vim/pack/plugins/start/vim-swift
+	url = https://github.com/toyamarinyon/vim-swift.git
+[submodule "vim/pack/plugins/start/vim-commentary"]
+	path = vim/pack/plugins/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
