@@ -1,3 +1,4 @@
-command script import /usr/local/opt/chisel/libexec/fblldb.py
+command script import lldb.macosx.crashlog
+#command script import /usr/local/opt/chisel/libexec/fblldb.py
 
 command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'

@@ -1,14 +1,17 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 set -euo pipefail
 IFS=$'\n\t'
 
 brew update
 brew upgrade
+brew cask upgrade
 brew cleanup
 
-nvim +PlugUpgrade +qall
-nvim +PlugUpdate +qall
+#nvim +PlugUpgrade +qall
+#nvim +PlugUpdate +qall
+
+# zplug update
 
 rustup update
 
