@@ -19,7 +19,7 @@ pip3 install \
      -U \
      --user \
      black \
-     neovim \
+     pynvim \
      'python-language-server[pyflakes,pycodestyle,pydocstyle]' \
      pyls-mypy \
      pyls-isort \
