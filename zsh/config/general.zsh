@@ -46,5 +46,3 @@ export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/ru
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
 . $HOME/.asdf/asdf.sh
-
-. $HOME/.asdf/completions/asdf.bash
