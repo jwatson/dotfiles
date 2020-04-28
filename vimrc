@@ -142,4 +142,16 @@ set laststatus=2
 " These files are actually ruby.
 autocmd BufNewFile,BufRead Podfile,*.podspec,Appfile,Fastfile,Matchfile setfiletype ruby
 
+" Section: Syntastic Configuration
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " vim:set et sw=2 foldmethod=expr foldexpr=getline(v\:lnum)=~'^\"\ Section\:'?'>1'\:'=':
+
