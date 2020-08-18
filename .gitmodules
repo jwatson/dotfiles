@@ -16,3 +16,18 @@
 [submodule "vim/pack/plugins/start/syntastic"]
 	path = vim/pack/plugins/start/syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/pack/plugins/start/vim-tmux-navigator"]
+	path = vim/pack/plugins/start/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vim/pack/plugins/start/vim-clang-format"]
+	path = vim/pack/plugins/start/vim-clang-format
+	url = https://github.com/rhysd/vim-clang-format.git
+[submodule "vim/pack/plugins/start/vim-toml"]
+	path = vim/pack/plugins/start/vim-toml
+	url = https://github.com/cespare/vim-toml.git
+[submodule "vim/pack/plugins/start/vim-marked"]
+	path = vim/pack/plugins/start/vim-marked
+	url = https://github.com/itspriddle/vim-marked.git
+[submodule "vim/pack/plugins/start/night-owl.vim"]
+	path = vim/pack/plugins/start/night-owl.vim
+	url = https://github.com/haishanh/night-owl.vim.git

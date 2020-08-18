@@ -94,11 +94,22 @@ set smartcase
 set hlsearch
 set showmatch
 
+" Section: Leader Key
+"
 " Set the leader key to space.
 let mapleader=" "
 
 " Set <leader>c to clear search highlighting.
 noremap <leader>c :noh<cr>
+
+" Set <leader>m to open the current buffer in Marked2.
+noremap <leader>m :MarkedOpen<cr>
+
+" Set <leader>p to set paste mode.
+noremap <leader>p: :set paste<cr>
+
+" Set <leader>np to unset paste mode.
+noremap <leader>np: :set nopaste<cr>
 
 " Section: Appearance
 
@@ -111,10 +122,11 @@ endif
 
 " Gruvbox dark color scheme.
 set background=dark
-let g:gruvbox_italic=1
-colorscheme gruvbox
-set t_ZH=
-set t_ZR=
+" let g:gruvbox_italic=1
+" colorscheme gruvbox
+colorscheme night-owl
+set t_ZH=[3m
+set t_ZR=[23m
 
 " Always draw the sign column. This keeps the buffer from moving when
 " adding/deleting signs (e.g. gitgutter, LanguageServer).
@@ -141,6 +153,7 @@ set laststatus=2
 
 " These files are actually ruby.
 autocmd BufNewFile,BufRead Podfile,*.podspec,Appfile,Fastfile,Matchfile setfiletype ruby
+autocmd BufNewFile,BufRead *.p8 setfiletype lua
 
 " Section: Syntastic Configuration
 

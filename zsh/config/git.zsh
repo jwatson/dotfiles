@@ -25,6 +25,7 @@ alias gca!='git commit -v -a --amend'
 alias gca='git commit -v -a'
 alias gcb='git checkout -b'
 alias gclean='git clean -fd'
+alias gs='git switch'
 alias gco='git checkout'
 alias gcp='git cherry-pick'
 

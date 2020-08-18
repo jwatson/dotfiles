@@ -45,4 +45,8 @@ export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/ru
 # --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 
+# yubikey-agent
+export SSH_AUTH_SOCK="/usr/local/var/run/yubikey-agent.sock"
+
 . $HOME/.asdf/asdf.sh
+. /usr/local/etc/profile.d/z.sh

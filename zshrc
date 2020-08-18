@@ -21,9 +21,9 @@ for zsh_source in $HOME/.zsh/config/*.zsh; do
 done
 
 ## Set up virtualenvwrapper
-export PIP_USER_DIR="$HOME/Library/Python/3.7"
-export WORKON_HOME="$HOME/.virtualenvs"
-[ -s "$PIP_USER_DIR/bin/virtualenvwrapper.sh" ] && \. "$PIP_USER_DIR/bin/virtualenvwrapper.sh"
+#export PIP_USER_DIR="$HOME/Library/Python/3.7"
+#export WORKON_HOME="$HOME/.virtualenvs"
+#[ -s "$PIP_USER_DIR/bin/virtualenvwrapper.sh" ] && \. "$PIP_USER_DIR/bin/virtualenvwrapper.sh"
 
 ensure_tmux_is_running
 
