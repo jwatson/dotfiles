@@ -1,5 +1,5 @@
 [user]
-	name = John Watson
+	name = Watson, John
 	email = john.watson@nuance.com
 	signingKey = D95F9AEA
 [alias]
@@ -59,3 +59,7 @@
 	process = git-lfs filter-process
 [commit]
     gpgSign = true
+[credential]
+	helper = cache --timeout=86400
+[init]
+	defaultBranch = main
