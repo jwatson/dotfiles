@@ -1,0 +1,31 @@
+filetype plugin indent on
+syntax on
+
+set backspace=2      " Backspace deletes like most programs in insert mode
+set nobackup
+set nowritebackup
+set noswapfile
+set history=50
+set ruler            " show the cursor position all the time
+set showcmd          " display incomplete commands
+set incsearch        " do incremental searching
+set laststatus=2     " Always display the status line
+set autowrite        " Automatically :write before running commands
+set formatoptions-=t " Don't auto-break long lines (re-enable this for prose)
+
+set tabstop=4
+set shiftwidth=4
+set shiftround
+set expandtab
+
+set number
+set numberwidth=5
+set relativenumber
+
+set list listchars=tab:»·,trail:·,nbsp:·
+
+" When the type of shell script is /bin/sh, assume a POSIX-compatible
+" shell for syntax highlighting purposes.
+let g:is_posix = 1
+
+" vim:ft=vim

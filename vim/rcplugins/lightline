@@ -1,0 +1,14 @@
+Plug 'itchyny/lightline.vim'
+
+let g:lightline = {
+      \ 'colorscheme': 'nightowl',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+
+" vim:ft=vim
