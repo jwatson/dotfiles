@@ -5,11 +5,11 @@ typeset -gU cdpath fpath mailpath path
 ## /etc/zprofile~orig, YMMV.
 path=(
     $HOME/.local/bin
-    $HOME/.poetry/bin
-    $HOME/Library/Python/3.7/bin
+    $HOME/Library/Python/3.9/bin
     $HOME/.cargo/bin
     $HOME/go/bin
     /usr/local/bin
+    /usr/local/sbin
     /usr/bin
     /bin
     /usr/sbin

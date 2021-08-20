@@ -10,7 +10,7 @@
 source /usr/local/opt/zplug/init.zsh
 
 zplug 'mafredri/zsh-async', from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+# zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
 zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 zplug 'zsh-users/zsh-completions', defer:2
 
@@ -24,6 +24,8 @@ done
 #export PIP_USER_DIR="$HOME/Library/Python/3.7"
 #export WORKON_HOME="$HOME/.virtualenvs"
 #[ -s "$PIP_USER_DIR/bin/virtualenvwrapper.sh" ] && \. "$PIP_USER_DIR/bin/virtualenvwrapper.sh"
+
+eval "$(starship init zsh)"
 
 ensure_tmux_is_running
 
