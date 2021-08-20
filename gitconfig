@@ -1,7 +1,7 @@
 [user]
 	name = Watson, John
 	email = john.watson@nuance.com
-	signingKey = D95F9AEA
+	; signingKey = D95F9AEA
 [alias]
     co = checkout
     cleanup = !git remote prune origin && git gc && git clean -df && git stash clear
@@ -12,6 +12,7 @@
     slog = log --pretty=format:"%C(auto,yellow)%h%C(auto)%d\\ %C(auto,reset)%s\\ \\ [%C(auto,blue)%cn%C(auto,reset),\\ %C(auto,cyan)%ar%C(auto,reset)]"
     ksreview = "!f() { local SHA=${1:-HEAD}; local BRANCH=${2:-master}; if [ $SHA == $BRANCH ]; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH...$SHA; }; f"
     unstage = restore --staged
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [color]
     ui = auto
 [color "branch"]
@@ -57,9 +58,11 @@
 	smudge = git-lfs smudge -- %f
     required = true
 	process = git-lfs filter-process
-[commit]
-    gpgSign = true
+; [commit]
+    ; gpgSign = true
 [credential]
 	helper = cache --timeout=86400
 [init]
 	defaultBranch = main
+[fetch]
+	prune = true
